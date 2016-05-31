@@ -9,7 +9,6 @@ public class Cliente {
     private String nome;
     private String cpf;
     private int idade;
-    private int dddTel;
     private int telefone;
     private Endereco endereco;
 
@@ -45,14 +44,6 @@ public class Cliente {
 
     public void setIdade(int idade) {
         this.idade = idade;
-    }
-
-    public int getDddTel() {
-        return dddTel;
-    }
-
-    public void setDddTel(int dddTel) {
-        this.dddTel = dddTel;
     }
 
     public int getTelefone() {

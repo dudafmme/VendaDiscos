@@ -22,7 +22,11 @@ public class FrameInicial extends javax.swing.JFrame {
      */
     public FrameInicial() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
+//    private Image icone() {
+//        return new javax.swing.ImageIcon(getClass().getResource("imagens/disco.png")).getImage();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,19 +39,142 @@ public class FrameInicial extends javax.swing.JFrame {
 
         lbFotoInicial = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
-        jMenuIniciar = new javax.swing.JMenu();
+        jMenuClientes = new javax.swing.JMenu();
+        jMenuClientesCadastrar = new javax.swing.JMenuItem();
+        jMenuClientesListar = new javax.swing.JMenuItem();
+        jMenuAutores = new javax.swing.JMenu();
+        jMenuAutoresCadastrar = new javax.swing.JMenuItem();
+        jMenuAutoresListar = new javax.swing.JMenuItem();
+        jMenuDiscos = new javax.swing.JMenu();
+        jMenuDiscosCadastrar = new javax.swing.JMenuItem();
+        jMenuDiscosListar = new javax.swing.JMenuItem();
+        jMenuVendas = new javax.swing.JMenu();
+        jMenuVendasEfetuar = new javax.swing.JMenuItem();
+        jMenuVendasConsultar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Para Vendas De Discos");
 
         lbFotoInicial.setBackground(new java.awt.Color(0, 0, 0));
+        lbFotoInicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbFotoInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/discos.png"))); // NOI18N
         lbFotoInicial.setOpaque(true);
 
-        jMenuIniciar.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuIniciar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jMenuIniciar.setText("Iniciar");
-        jMenuIniciar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuBar.add(jMenuIniciar);
+        jMenuClientes.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jMenuClientes.setText("  Clientes  ");
+        jMenuClientes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jMenuClientesCadastrar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuClientesCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuClientesCadastrar.setText("  Cadastrar  ");
+        jMenuClientesCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuClientesCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuClientesCadastrarActionPerformed(evt);
+            }
+        });
+        jMenuClientes.add(jMenuClientesCadastrar);
+
+        jMenuClientesListar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuClientesListar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuClientesListar.setText("  Listar  ");
+        jMenuClientesListar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuClientesListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuClientesListarActionPerformed(evt);
+            }
+        });
+        jMenuClientes.add(jMenuClientesListar);
+
+        jMenuBar.add(jMenuClientes);
+
+        jMenuAutores.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuAutores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jMenuAutores.setText("  Autores  ");
+        jMenuAutores.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jMenuAutoresCadastrar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuAutoresCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuAutoresCadastrar.setText("  Cadastrar  ");
+        jMenuAutoresCadastrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.lightGray));
+        jMenuAutoresCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAutoresCadastrarActionPerformed(evt);
+            }
+        });
+        jMenuAutores.add(jMenuAutoresCadastrar);
+
+        jMenuAutoresListar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuAutoresListar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuAutoresListar.setText("  Listar  ");
+        jMenuAutoresListar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuAutoresListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAutoresListarActionPerformed(evt);
+            }
+        });
+        jMenuAutores.add(jMenuAutoresListar);
+
+        jMenuBar.add(jMenuAutores);
+
+        jMenuDiscos.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuDiscos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jMenuDiscos.setText("  Discos  ");
+        jMenuDiscos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jMenuDiscosCadastrar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuDiscosCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuDiscosCadastrar.setText("  Cadastrar  ");
+        jMenuDiscosCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuDiscosCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDiscosCadastrarActionPerformed(evt);
+            }
+        });
+        jMenuDiscos.add(jMenuDiscosCadastrar);
+
+        jMenuDiscosListar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuDiscosListar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuDiscosListar.setText("  Listar  ");
+        jMenuDiscosListar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuDiscosListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDiscosListarActionPerformed(evt);
+            }
+        });
+        jMenuDiscos.add(jMenuDiscosListar);
+
+        jMenuBar.add(jMenuDiscos);
+
+        jMenuVendas.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuVendas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jMenuVendas.setText("  Vendas  ");
+        jMenuVendas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jMenuVendasEfetuar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuVendasEfetuar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuVendasEfetuar.setText("  Efetuar  ");
+        jMenuVendasEfetuar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuVendasEfetuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendasEfetuarActionPerformed(evt);
+            }
+        });
+        jMenuVendas.add(jMenuVendasEfetuar);
+
+        jMenuVendasConsultar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuVendasConsultar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuVendasConsultar.setText("  Consultar  ");
+        jMenuVendasConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuVendasConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendasConsultarActionPerformed(evt);
+            }
+        });
+        jMenuVendas.add(jMenuVendasConsultar);
+
+        jMenuBar.add(jMenuVendas);
 
         setJMenuBar(jMenuBar);
 
@@ -59,11 +186,45 @@ public class FrameInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbFotoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 611, Short.MAX_VALUE)
+            .addComponent(lbFotoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuAutoresCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresCadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAutoresCadastrarActionPerformed
+
+    private void jMenuAutoresListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAutoresListarActionPerformed
+
+    private void jMenuClientesCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesCadastrarActionPerformed
+        // TODO add your handling code here:
+        FrameCadastroCliente frameCadastroClientes = new FrameCadastroCliente();
+        frameCadastroClientes.setVisible(true);
+    }//GEN-LAST:event_jMenuClientesCadastrarActionPerformed
+
+    private void jMenuClientesListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuClientesListarActionPerformed
+
+    private void jMenuDiscosCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosCadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuDiscosCadastrarActionPerformed
+
+    private void jMenuDiscosListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuDiscosListarActionPerformed
+
+    private void jMenuVendasEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasEfetuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuVendasEfetuarActionPerformed
+
+    private void jMenuVendasConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuVendasConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,8 +263,19 @@ public class FrameInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenuAutores;
+    private javax.swing.JMenuItem jMenuAutoresCadastrar;
+    private javax.swing.JMenuItem jMenuAutoresListar;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenu jMenuIniciar;
+    private javax.swing.JMenu jMenuClientes;
+    private javax.swing.JMenuItem jMenuClientesCadastrar;
+    private javax.swing.JMenuItem jMenuClientesListar;
+    private javax.swing.JMenu jMenuDiscos;
+    private javax.swing.JMenuItem jMenuDiscosCadastrar;
+    private javax.swing.JMenuItem jMenuDiscosListar;
+    private javax.swing.JMenu jMenuVendas;
+    private javax.swing.JMenuItem jMenuVendasConsultar;
+    private javax.swing.JMenuItem jMenuVendasEfetuar;
     private javax.swing.JLabel lbFotoInicial;
     // End of variables declaration//GEN-END:variables
 }

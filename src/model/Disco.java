@@ -9,7 +9,7 @@ public class Disco {
     private String nome;
     private Autor autor;
     private String genero;
-    private String dtLancamento;
+    private int anoLancamento;
     private Double preco;
     private int qtdeDisponivel;
     private boolean disponivel;
@@ -49,12 +49,12 @@ public class Disco {
         this.genero = genero;
     }
 
-    public String getDtLancamento() {
-        return dtLancamento;
+    public int getAnoLancamento() {
+        return anoLancamento;
     }
 
-    public void setDtLancamento(String dtLancamento) {
-        this.dtLancamento = dtLancamento;
+    public void setAnoLancamento(int anoLancamento) {
+        this.anoLancamento = anoLancamento;
     }
 
     public Double getPreco() {
