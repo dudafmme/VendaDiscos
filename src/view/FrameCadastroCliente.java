@@ -5,23 +5,19 @@
  */
 package view;
 
-import java.awt.Color;
-
 /**
  *
  * @author Duda
  */
-public class FrameCadastroCliente extends javax.swing.JFrame {
+public class FrameCadastroCliente extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrameCadastroCliente
+     * Creates new form CadastroCliente
      */
-    public FrameCadastroCliente() {
+    public FrameCadastroCliente(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        setResizable(false);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
     }
 
     /**
@@ -61,10 +57,7 @@ public class FrameCadastroCliente extends javax.swing.JFrame {
         btClienteLimpar = new javax.swing.JButton();
         btClienteSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de Cliente");
-        setBackground(new java.awt.Color(255, 255, 255));
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelDadosCliente.setBackground(new java.awt.Color(255, 255, 255));
         panelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Dados do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
@@ -335,14 +328,14 @@ public class FrameCadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfClienteEnderecoUFActionPerformed
 
-    private void btClienteLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteLimparActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btClienteLimparActionPerformed
-
     private void btClienteVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteVoltarActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btClienteVoltarActionPerformed
+
+    private void btClienteLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteLimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btClienteLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,11 +363,19 @@ public class FrameCadastroCliente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameCadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameCadastroCliente().setVisible(true);
+                FrameCadastroCliente dialog = new FrameCadastroCliente(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

@@ -194,6 +194,8 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuAutoresCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresCadastrarActionPerformed
         // TODO add your handling code here:
+        FrameCadastroAutor frameCadastroAutor = new FrameCadastroAutor(this, rootPaneCheckingEnabled);
+        frameCadastroAutor.setVisible(true);
     }//GEN-LAST:event_jMenuAutoresCadastrarActionPerformed
 
     private void jMenuAutoresListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresListarActionPerformed
@@ -202,7 +204,7 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuClientesCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesCadastrarActionPerformed
         // TODO add your handling code here:
-        FrameCadastroCliente frameCadastroClientes = new FrameCadastroCliente();
+        FrameCadastroCliente frameCadastroClientes = new FrameCadastroCliente(this, rootPaneCheckingEnabled);
         frameCadastroClientes.setVisible(true);
     }//GEN-LAST:event_jMenuClientesCadastrarActionPerformed
 
