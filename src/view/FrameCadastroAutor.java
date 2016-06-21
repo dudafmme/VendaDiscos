@@ -5,6 +5,13 @@
  */
 package view;
 
+import controller.AutorController;
+import controller.ClienteController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Autor;
+
 /**
  *
  * @author Duda
@@ -135,6 +142,11 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
 
         btAutorSalvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btAutorSalvar.setText("Salvar");
+        btAutorSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAutorSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBotoesAutorLayout = new javax.swing.GroupLayout(panelBotoesAutor);
         panelBotoesAutor.setLayout(panelBotoesAutorLayout);
@@ -186,6 +198,23 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
     private void btAutorLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAutorLimparActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btAutorLimparActionPerformed
+
+    private void btAutorSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAutorSalvarActionPerformed
+        // TODO add your handling code here:
+        AutorController cAutor = new AutorController();
+        Autor autor = new Autor();
+        autor.setNome(tfAutorNome.getText());
+        autor.setOrigem(tfAutorOrigem.getText());
+        autor.setBanda(rbAutorBandaSim.isSelected());
+ 
+        try {
+            cAutor.criarAutor(autor);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameCadastroAutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btAutorSalvarActionPerformed
 
     /**
      * @param args the command line arguments

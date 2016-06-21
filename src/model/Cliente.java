@@ -4,13 +4,14 @@ package model;
  *
  * @author Duda
  */
+
 public class Cliente {
     private Long id;
     private String nome;
     private String cpf;
     private int idade;
     private int telefone;
-    private Endereco endereco;
+    private String endereco;
 
     public Cliente() {}
 
@@ -54,12 +55,12 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Endereco getEndereco() {
+    public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
+
 }

@@ -8,7 +8,6 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 import model.Cliente;
 
@@ -21,10 +20,11 @@ public class ClienteDAO {
     PreparedStatement comando;
     
     //Método para gravar um cliente no BD
-    public void inserirNovoCliente(Cliente cliente) throws SQLException{
+    public void inserirNovoCliente(Cliente cliente) throws SQLException, ClassNotFoundException{
         conexao = ConnectionFactory.createConnection();
         
-        String sql = "INSERT INTO Cliente (id, nome, cpf, idade, telefone, endereco_cep) " 
+        //ver colunas das tabelas
+        String sql = "INSERT INTO Cliente (id, nome, cpf, idade, telefone, endereco) " 
                 + "VALUES (?,?,?,?,?,?)";
         
         comando = conexao.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class ClienteDAO {
         comando.setString(3, cliente.getCpf());
         comando.setInt(4, cliente.getTelefone());
         comando.setInt(5, cliente.getIdade());
-        comando.setInt(6, cliente.getEndereco().getCep());
+        comando.setString(6, cliente.getEndereco());
 
         //Executando comando        
         if(comando.execute() == true)

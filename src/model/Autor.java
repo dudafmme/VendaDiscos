@@ -1,11 +1,13 @@
 package model;
 
+
 /**
  *
  * @author Duda
  */
+
 public class Autor {
-    private Long id;
+    private Integer id;
     private String nome;
     private String origem;
     private boolean banda;
@@ -13,11 +15,11 @@ public class Autor {
     public Autor() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

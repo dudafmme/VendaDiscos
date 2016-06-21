@@ -1,8 +1,12 @@
 package model;
+
+import java.util.Calendar;
+
 /**
  *
  * @author Duda
  */
+
 public class Venda {
     private Long numeroVenda;
     private Cliente cliente;
@@ -11,7 +15,7 @@ public class Venda {
     private boolean desconto;
     private Double valorTotal;
     private Double valorDesconto;
-    private String dataVenda;
+    private Calendar dataVenda;
 
     public Venda() {
     }
@@ -23,7 +27,7 @@ public class Venda {
     public void setNumeroVenda(Long numeroVenda) {
         this.numeroVenda = numeroVenda;
     }
-
+    
     public Cliente getCliente() {
         return cliente;
     }
@@ -72,11 +76,11 @@ public class Venda {
         this.valorDesconto = valorDesconto;
     }
 
-    public String getDataVenda() {
+    public Calendar getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(String dataVenda) {
+    public void setDataVenda(Calendar dataVenda) {
         this.dataVenda = dataVenda;
     }
     

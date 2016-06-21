@@ -14,9 +14,9 @@ import java.sql.SQLException;
  * @author Duda
  */
 public class ConnectionFactory {
-    public static Connection createConnection() {
-
-        String stringDeConexao = "jdbc:mysql://localhost:3306/lojadiscos";
+    public static Connection createConnection() throws ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
+        String stringDeConexao = "jdbc:mysql://localhost:3306/loja";
         String usuario = "root";
         String senha = "root";
         Connection conexao = null;
