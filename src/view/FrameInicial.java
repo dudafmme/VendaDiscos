@@ -214,6 +214,8 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuDiscosCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosCadastrarActionPerformed
         // TODO add your handling code here:
+        FrameCadastroDisco frameCadastroDisco = new FrameCadastroDisco(this, rootPaneCheckingEnabled);
+        frameCadastroDisco.setVisible(true);
     }//GEN-LAST:event_jMenuDiscosCadastrarActionPerformed
 
     private void jMenuDiscosListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosListarActionPerformed

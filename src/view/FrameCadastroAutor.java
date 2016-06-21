@@ -211,6 +211,8 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
             cAutor.criarAutor(autor);
         } catch (SQLException ex) {
             Logger.getLogger(FrameCadastroAutor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrameCadastroAutor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         

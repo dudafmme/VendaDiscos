@@ -5,11 +5,26 @@
  */
 package view;
 
+import controller.AutorController;
+import controller.DiscoController;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.Autor;
+import model.Disco;
+
 /**
  *
  * @author Duda
  */
 public class FrameCadastroDisco extends javax.swing.JDialog {
+
+    String idAutor;
+    ResultSet rs;
+    String nome;
+    String origem;
 
     /**
      * Creates new form FrameCadastroDisco
@@ -17,6 +32,7 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
     public FrameCadastroDisco(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -28,21 +44,366 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoDisponivel = new javax.swing.ButtonGroup();
+        panelDadosDisco = new javax.swing.JPanel();
+        lbNome = new javax.swing.JLabel();
+        tfNomeDisco = new javax.swing.JTextField();
+        lbGeneroMusical = new javax.swing.JLabel();
+        tfGeneroMusical = new javax.swing.JTextField();
+        lbDiscoDisponivel = new javax.swing.JLabel();
+        rbDisponivelSim = new javax.swing.JRadioButton();
+        rbDisponivelNao = new javax.swing.JRadioButton();
+        lbAnoLancamentoDisco = new javax.swing.JLabel();
+        tfAnoLancamentoDisco = new javax.swing.JTextField();
+        lbQtdeDiscoDisponivel = new javax.swing.JLabel();
+        tfQtdeDiscoDisponivel = new javax.swing.JTextField();
+        tfPrecoDisco = new javax.swing.JTextField();
+        lbPrecoDisco = new javax.swing.JLabel();
+        panelFoto = new javax.swing.JPanel();
+        lbFoto = new javax.swing.JLabel();
+        panelAutor = new javax.swing.JPanel();
+        lbNomeAutor = new javax.swing.JLabel();
+        tfNomeAutor = new javax.swing.JTextField();
+        lbOrigemAutor = new javax.swing.JLabel();
+        tfOrigemAutor = new javax.swing.JTextField();
+        btBuscarAutor = new javax.swing.JButton();
+        tfIdAutor = new javax.swing.JTextField();
+        lbIdAutor = new javax.swing.JLabel();
+        panelBotoesAutor = new javax.swing.JPanel();
+        btVoltarDisco = new javax.swing.JButton();
+        btLimparDisco = new javax.swing.JButton();
+        btSalvarDisco = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        panelDadosDisco.setBackground(new java.awt.Color(255, 255, 255));
+        panelDadosDisco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Dados do Disco", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        lbNome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbNome.setText("Nome do disco: ");
+
+        lbGeneroMusical.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbGeneroMusical.setText("Genero: ");
+
+        lbDiscoDisponivel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbDiscoDisponivel.setText("O disco está disponível para venda? ");
+
+        rbDisponivelSim.setBackground(new java.awt.Color(255, 255, 255));
+        grupoDisponivel.add(rbDisponivelSim);
+        rbDisponivelSim.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        rbDisponivelSim.setText("Sim");
+
+        rbDisponivelNao.setBackground(new java.awt.Color(255, 255, 255));
+        grupoDisponivel.add(rbDisponivelNao);
+        rbDisponivelNao.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        rbDisponivelNao.setText("Não");
+
+        lbAnoLancamentoDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbAnoLancamentoDisco.setText("Ano de Lançamento: ");
+
+        lbQtdeDiscoDisponivel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbQtdeDiscoDisponivel.setText("Qtde Disponível: ");
+
+        lbPrecoDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbPrecoDisco.setText("Preço: ");
+
+        panelFoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Capa do Disco", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        lbFoto.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        lbFoto.setText("Sem Foto");
+
+        javax.swing.GroupLayout panelFotoLayout = new javax.swing.GroupLayout(panelFoto);
+        panelFoto.setLayout(panelFotoLayout);
+        panelFotoLayout.setHorizontalGroup(
+            panelFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFotoLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(lbFoto)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        panelFotoLayout.setVerticalGroup(
+            panelFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFotoLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(lbFoto)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        panelAutor.setBackground(new java.awt.Color(255, 255, 255));
+        panelAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dados do Autor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        lbNomeAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbNomeAutor.setText("Nome: ");
+
+        lbOrigemAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbOrigemAutor.setText("Origem: ");
+
+        btBuscarAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btBuscarAutor.setText("Buscar Autor");
+        btBuscarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarAutorActionPerformed(evt);
+            }
+        });
+
+        tfIdAutor.setEnabled(false);
+
+        lbIdAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbIdAutor.setText("Id: ");
+
+        javax.swing.GroupLayout panelAutorLayout = new javax.swing.GroupLayout(panelAutor);
+        panelAutor.setLayout(panelAutorLayout);
+        panelAutorLayout.setHorizontalGroup(
+            panelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAutorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbOrigemAutor)
+                    .addComponent(lbNomeAutor)
+                    .addComponent(lbIdAutor, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfNomeAutor)
+                    .addComponent(tfOrigemAutor)
+                    .addGroup(panelAutorLayout.createSequentialGroup()
+                        .addComponent(tfIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(btBuscarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelAutorLayout.setVerticalGroup(
+            panelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAutorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNomeAutor)
+                    .addComponent(tfNomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbOrigemAutor)
+                    .addComponent(tfOrigemAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbIdAutor)
+                    .addComponent(tfIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarAutor))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelDadosDiscoLayout = new javax.swing.GroupLayout(panelDadosDisco);
+        panelDadosDisco.setLayout(panelDadosDiscoLayout);
+        panelDadosDiscoLayout.setHorizontalGroup(
+            panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosDiscoLayout.createSequentialGroup()
+                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbQtdeDiscoDisponivel)
+                            .addComponent(lbGeneroMusical, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfGeneroMusical)
+                            .addComponent(tfQtdeDiscoDisponivel))
+                        .addGap(10, 10, 10)
+                        .addComponent(lbAnoLancamentoDisco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfAnoLancamentoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                        .addComponent(lbDiscoDisponivel)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbDisponivelSim)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbDisponivelNao)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosDiscoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfNomeDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosDiscoLayout.createSequentialGroup()
+                        .addComponent(panelAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lbPrecoDisco)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfPrecoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
+        panelDadosDiscoLayout.setVerticalGroup(
+            panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfNomeDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lbNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbGeneroMusical)
+                    .addComponent(tfGeneroMusical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAnoLancamentoDisco)
+                    .addComponent(tfAnoLancamentoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbQtdeDiscoDisponivel)
+                    .addComponent(tfQtdeDiscoDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPrecoDisco)
+                    .addComponent(tfPrecoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbDiscoDisponivel)
+                    .addComponent(rbDisponivelSim)
+                    .addComponent(rbDisponivelNao))
+                .addGap(27, 27, 27)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelBotoesAutor.setBackground(new java.awt.Color(255, 255, 255));
+        panelBotoesAutor.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(102, 102, 102)));
+
+        btVoltarDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btVoltarDisco.setText("Voltar");
+        btVoltarDisco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarDiscoActionPerformed(evt);
+            }
+        });
+
+        btLimparDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimparDisco.setText("Limpar");
+        btLimparDisco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparDiscoActionPerformed(evt);
+            }
+        });
+
+        btSalvarDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btSalvarDisco.setText("Salvar");
+        btSalvarDisco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarDiscoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBotoesAutorLayout = new javax.swing.GroupLayout(panelBotoesAutor);
+        panelBotoesAutor.setLayout(panelBotoesAutorLayout);
+        panelBotoesAutorLayout.setHorizontalGroup(
+            panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotoesAutorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btSalvarDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btLimparDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btVoltarDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelBotoesAutorLayout.setVerticalGroup(
+            panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotoesAutorLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btVoltarDisco)
+                    .addComponent(btLimparDisco)
+                    .addComponent(btSalvarDisco))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelBotoesAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelDadosDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelDadosDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBotoesAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btVoltarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarDiscoActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btVoltarDiscoActionPerformed
+
+    private void btLimparDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparDiscoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btLimparDiscoActionPerformed
+
+    private void btSalvarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarDiscoActionPerformed
+        // TODO add your handling code here:
+        DiscoController cDisco = new DiscoController();
+        Disco disco = new Disco();
+        Autor autor = new Autor();
+
+        int autorId = Integer.parseInt(tfIdAutor.getText());
+        String nomeDisco = tfNomeDisco.getText();
+        String genero = tfGeneroMusical.getText();
+        boolean disponivel = rbDisponivelSim.isSelected();
+        Integer ano = Integer.parseInt(tfAnoLancamentoDisco.getText());
+        Integer qtde = Integer.parseInt(tfQtdeDiscoDisponivel.getText());
+        Float preco = Float.parseFloat(tfPrecoDisco.getText());
+//
+//        if (nomeDisco == "" || genero == "" || ano == null || qtde == null || preco == null) {
+//            JOptionPane.showMessageDialog(this, "Todos os campos deverão ser preenchidos corretamente!");
+//        } else {
+        try {
+            autor.setId(autorId);
+            disco.setAutor(autor);
+            disco.setNome(nomeDisco);
+            disco.setGenero(genero);
+            disco.setDisponivel(disponivel);
+            disco.setAnoLancamento(ano);
+            disco.setQtdeDisponivel(qtde);
+            disco.setPreco(preco);
+
+        } catch (NumberFormatException n) {
+            JOptionPane.showMessageDialog(this, "Digite apenas números!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro!");
+        }
+        try {
+            cDisco.criarDisco(disco);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameCadastroDisco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrameCadastroDisco.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //  }
+    }//GEN-LAST:event_btSalvarDiscoActionPerformed
+
+    private void btBuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarAutorActionPerformed
+        // TODO add your handling code here:
+        AutorController cAutor = new AutorController();
+        nome = tfNomeAutor.getText();
+        origem = tfOrigemAutor.getText();
+        try {
+            rs = cAutor.buscarAutor(nome, origem);
+            idAutor = rs.getString("id");
+            tfIdAutor.setText(idAutor);
+        } catch (SQLException ex) {
+            //Logger.getLogger(FrameCadastroDisco.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Não foi possível localizar o autor!");
+        } catch (ClassNotFoundException ex) {
+            //Logger.getLogger(FrameCadastroDisco.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro!");
+        }
+
+    }//GEN-LAST:event_btBuscarAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +448,34 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btBuscarAutor;
+    private javax.swing.JButton btLimparDisco;
+    private javax.swing.JButton btSalvarDisco;
+    private javax.swing.JButton btVoltarDisco;
+    private javax.swing.ButtonGroup grupoDisponivel;
+    private javax.swing.JLabel lbAnoLancamentoDisco;
+    private javax.swing.JLabel lbDiscoDisponivel;
+    private javax.swing.JLabel lbFoto;
+    private javax.swing.JLabel lbGeneroMusical;
+    private javax.swing.JLabel lbIdAutor;
+    private javax.swing.JLabel lbNome;
+    private javax.swing.JLabel lbNomeAutor;
+    private javax.swing.JLabel lbOrigemAutor;
+    private javax.swing.JLabel lbPrecoDisco;
+    private javax.swing.JLabel lbQtdeDiscoDisponivel;
+    private javax.swing.JPanel panelAutor;
+    private javax.swing.JPanel panelBotoesAutor;
+    private javax.swing.JPanel panelDadosDisco;
+    private javax.swing.JPanel panelFoto;
+    private javax.swing.JRadioButton rbDisponivelNao;
+    private javax.swing.JRadioButton rbDisponivelSim;
+    private javax.swing.JTextField tfAnoLancamentoDisco;
+    private javax.swing.JTextField tfGeneroMusical;
+    private javax.swing.JTextField tfIdAutor;
+    private javax.swing.JTextField tfNomeAutor;
+    private javax.swing.JTextField tfNomeDisco;
+    private javax.swing.JTextField tfOrigemAutor;
+    private javax.swing.JTextField tfPrecoDisco;
+    private javax.swing.JTextField tfQtdeDiscoDisponivel;
     // End of variables declaration//GEN-END:variables
 }

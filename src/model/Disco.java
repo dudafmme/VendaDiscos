@@ -10,7 +10,7 @@ public class Disco {
     private Autor autor;
     private String genero;
     private int anoLancamento;
-    private Double preco;
+    private Float preco;
     private int qtdeDisponivel;
     private boolean disponivel;
 
@@ -57,11 +57,11 @@ public class Disco {
         this.anoLancamento = anoLancamento;
     }
 
-    public Double getPreco() {
+    public Float getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(Float preco) {
         this.preco = preco;
     }
 
