@@ -54,41 +54,51 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         clienteQuery = java.beans.Beans.isDesignTime() ? null : lojaPUEntityManager.createQuery("SELECT c FROM Cliente c");
         clienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : clienteQuery.getResultList();
         panelDadosVenda = new javax.swing.JPanel();
-        panelDisco = new javax.swing.JPanel();
+        panelDadosDisco = new javax.swing.JPanel();
         lbNomeDisco = new javax.swing.JLabel();
-        tfNomeAutor = new javax.swing.JTextField();
-        lbAnoLancamentoDisco = new javax.swing.JLabel();
-        tfOrigemAutor = new javax.swing.JTextField();
+        tfNomeDisco = new javax.swing.JTextField();
+        lbAutor = new javax.swing.JLabel();
+        tfAutor = new javax.swing.JTextField();
         btBuscarDisco = new javax.swing.JButton();
         tfIdAutor = new javax.swing.JTextField();
         lbIdAutor = new javax.swing.JLabel();
-        panelDisco1 = new javax.swing.JPanel();
+        lbValorDisco = new javax.swing.JLabel();
+        tfValorDisco = new javax.swing.JTextField();
+        lbQtdeDisponivelDisco = new javax.swing.JLabel();
+        tfQtdeDisponivelDisco = new javax.swing.JTextField();
+        panelDadosCliente = new javax.swing.JPanel();
         btBuscarCliente = new javax.swing.JButton();
         tfIdCliente = new javax.swing.JTextField();
         lbIdCliente = new javax.swing.JLabel();
         lbCPFCliente = new javax.swing.JLabel();
         tfCPFCliente = new javax.swing.JTextField();
+        panelVendaDados = new javax.swing.JPanel();
+        lbQuantidadeVendida = new javax.swing.JLabel();
+        tfQtdeVendida = new javax.swing.JTextField();
+        btCalcularVenda = new javax.swing.JButton();
+        lbValorTotalVenda = new javax.swing.JLabel();
+        tfValorTotalVenda = new javax.swing.JTextField();
         panelBotoesAutor = new javax.swing.JPanel();
         btVoltarDisco = new javax.swing.JButton();
         btLimparDisco = new javax.swing.JButton();
         btSalvarDisco = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        panelVendasList = new javax.swing.JPanel();
+        jScrollPaneVendas = new javax.swing.JScrollPane();
+        jTableVendas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelDadosVenda.setBackground(new java.awt.Color(255, 255, 255));
         panelDadosVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Efetuar Venda", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        panelDisco.setBackground(new java.awt.Color(255, 255, 255));
-        panelDisco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dados do Disco", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        panelDadosDisco.setBackground(new java.awt.Color(255, 255, 255));
+        panelDadosDisco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dados do Disco", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         lbNomeDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbNomeDisco.setText("Nome: ");
 
-        lbAnoLancamentoDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbAnoLancamentoDisco.setText("Autor: ");
+        lbAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbAutor.setText("Autor: ");
 
         btBuscarDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btBuscarDisco.setText("Buscar Disco");
@@ -103,50 +113,74 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         lbIdAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbIdAutor.setText("Id: ");
 
-        javax.swing.GroupLayout panelDiscoLayout = new javax.swing.GroupLayout(panelDisco);
-        panelDisco.setLayout(panelDiscoLayout);
-        panelDiscoLayout.setHorizontalGroup(
-            panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiscoLayout.createSequentialGroup()
+        lbValorDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbValorDisco.setText("Valor: (R$)");
+
+        tfValorDisco.setEnabled(false);
+
+        lbQtdeDisponivelDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbQtdeDisponivelDisco.setText("Qtde. Disp.: ");
+
+        tfQtdeDisponivelDisco.setEnabled(false);
+
+        javax.swing.GroupLayout panelDadosDiscoLayout = new javax.swing.GroupLayout(panelDadosDisco);
+        panelDadosDisco.setLayout(panelDadosDiscoLayout);
+        panelDadosDiscoLayout.setHorizontalGroup(
+            panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDadosDiscoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDiscoLayout.createSequentialGroup()
-                        .addGroup(panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbAnoLancamentoDisco)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbAutor)
                             .addComponent(lbNomeDisco))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfOrigemAutor)
-                            .addComponent(tfNomeAutor)))
-                    .addGroup(panelDiscoLayout.createSequentialGroup()
+                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfAutor)
+                            .addComponent(tfNomeDisco)))
+                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
                         .addComponent(lbIdAutor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btBuscarDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btBuscarDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosDiscoLayout.createSequentialGroup()
+                        .addComponent(lbValorDisco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfValorDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbQtdeDisponivelDisco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfQtdeDisponivelDisco)))
                 .addContainerGap())
         );
-        panelDiscoLayout.setVerticalGroup(
-            panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiscoLayout.createSequentialGroup()
+        panelDadosDiscoLayout.setVerticalGroup(
+            panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDadosDiscoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNomeDisco)
-                    .addComponent(tfNomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNomeDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAnoLancamentoDisco)
-                    .addComponent(tfOrigemAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbAutor)
+                    .addComponent(tfAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbValorDisco)
+                    .addComponent(tfValorDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbQtdeDisponivelDisco)
+                    .addComponent(tfQtdeDisponivelDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbIdAutor)
                     .addComponent(tfIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscarDisco))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        panelDisco1.setBackground(new java.awt.Color(255, 255, 255));
-        panelDisco1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dados do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        panelDadosCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dados do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         btBuscarCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btBuscarCliente.setText("Buscar Cliente");
@@ -164,36 +198,91 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         lbCPFCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbCPFCliente.setText("CPF do Cliente: ");
 
-        javax.swing.GroupLayout panelDisco1Layout = new javax.swing.GroupLayout(panelDisco1);
-        panelDisco1.setLayout(panelDisco1Layout);
-        panelDisco1Layout.setHorizontalGroup(
-            panelDisco1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDisco1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDadosClienteLayout = new javax.swing.GroupLayout(panelDadosCliente);
+        panelDadosCliente.setLayout(panelDadosClienteLayout);
+        panelDadosClienteLayout.setHorizontalGroup(
+            panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDadosClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDisco1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelDisco1Layout.createSequentialGroup()
+                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelDadosClienteLayout.createSequentialGroup()
                         .addComponent(lbIdCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelDisco1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                     .addComponent(tfCPFCliente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelDisco1Layout.setVerticalGroup(
-            panelDisco1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDisco1Layout.createSequentialGroup()
+        panelDadosClienteLayout.setVerticalGroup(
+            panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDadosClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDisco1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbCPFCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelDisco1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbIdCliente)
                     .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscarCliente))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelVendaDados.setBackground(new java.awt.Color(255, 255, 255));
+        panelVendaDados.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        lbQuantidadeVendida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbQuantidadeVendida.setText("Qtde. Vendida: ");
+
+        btCalcularVenda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btCalcularVenda.setText("Calcular Total");
+        btCalcularVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCalcularVendaActionPerformed(evt);
+            }
+        });
+
+        lbValorTotalVenda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbValorTotalVenda.setText("Valor Total: (R$)");
+
+        tfValorTotalVenda.setEnabled(false);
+
+        javax.swing.GroupLayout panelVendaDadosLayout = new javax.swing.GroupLayout(panelVendaDados);
+        panelVendaDados.setLayout(panelVendaDadosLayout);
+        panelVendaDadosLayout.setHorizontalGroup(
+            panelVendaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVendaDadosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelVendaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelVendaDadosLayout.createSequentialGroup()
+                        .addGap(0, 114, Short.MAX_VALUE)
+                        .addComponent(btCalcularVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVendaDadosLayout.createSequentialGroup()
+                        .addGroup(panelVendaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbQuantidadeVendida)
+                            .addComponent(lbValorTotalVenda))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelVendaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfValorTotalVenda)
+                            .addComponent(tfQtdeVendida))))
+                .addContainerGap())
+        );
+        panelVendaDadosLayout.setVerticalGroup(
+            panelVendaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVendaDadosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelVendaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbQuantidadeVendida)
+                    .addComponent(tfQtdeVendida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelVendaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbValorTotalVenda)
+                    .addComponent(tfValorTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btCalcularVenda)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -202,18 +291,21 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         panelDadosVendaLayout.setHorizontalGroup(
             panelDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDadosVendaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelDisco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelDadosDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelDadosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelVendaDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         panelDadosVendaLayout.setVerticalGroup(
             panelDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDadosVendaLayout.createSequentialGroup()
-                .addComponent(panelDisco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelDadosDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelVendaDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,29 +341,29 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         panelBotoesAutorLayout.setHorizontalGroup(
             panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotoesAutorLayout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
-                .addComponent(btSalvarDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btLimparDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btVoltarDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(35, 35, 35)
+                .addComponent(btSalvarDisco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btLimparDisco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btVoltarDisco)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBotoesAutorLayout.setVerticalGroup(
             panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotoesAutorLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(29, 29, 29)
                 .addGroup(panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltarDisco)
                     .addComponent(btLimparDisco)
                     .addComponent(btSalvarDisco))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray), "Vendas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 12))); // NOI18N
+        panelVendasList.setBackground(new java.awt.Color(255, 255, 255));
+        panelVendasList.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray), "Vendas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 12))); // NOI18N
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, vendaList1, jTable1);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, vendaList1, jTableVendas);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Long.class);
@@ -287,22 +379,22 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
 
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPaneVendas.setViewportView(jTableVendas);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelVendasListLayout = new javax.swing.GroupLayout(panelVendasList);
+        panelVendasList.setLayout(panelVendasListLayout);
+        panelVendasListLayout.setHorizontalGroup(
+            panelVendasListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVendasListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                .addComponent(jScrollPaneVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelVendasListLayout.setVerticalGroup(
+            panelVendasListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVendasListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+                .addComponent(jScrollPaneVendas)
                 .addContainerGap())
         );
 
@@ -311,19 +403,20 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(panelBotoesAutor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDadosVenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelDadosVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBotoesAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelVendasList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelDadosVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelDadosVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelBotoesAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelVendasList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         bindingGroup.bind();
@@ -398,8 +491,8 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     private void btBuscarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarDiscoActionPerformed
         // TODO add your handling code here:
         AutorController cAutor = new AutorController();
-        nome = tfNomeAutor.getText();
-        origem = tfOrigemAutor.getText();
+        nome = tfNomeDisco.getText();
+        origem = tfAutor.getText();
         try {
             rs = cAutor.buscarAutor(nome, origem);
             idAutor = rs.getString("id");
@@ -417,6 +510,10 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btBuscarClienteActionPerformed
+
+    private void btCalcularVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalcularVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCalcularVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -464,30 +561,40 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarCliente;
     private javax.swing.JButton btBuscarDisco;
+    private javax.swing.JButton btCalcularVenda;
     private javax.swing.JButton btLimparDisco;
     private javax.swing.JButton btSalvarDisco;
     private javax.swing.JButton btVoltarDisco;
     private java.util.List<view.Cliente> clienteList;
     private javax.persistence.Query clienteQuery;
     private javax.swing.ButtonGroup grupoDisponivel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lbAnoLancamentoDisco;
+    private javax.swing.JScrollPane jScrollPaneVendas;
+    private javax.swing.JTable jTableVendas;
+    private javax.swing.JLabel lbAutor;
     private javax.swing.JLabel lbCPFCliente;
     private javax.swing.JLabel lbIdAutor;
     private javax.swing.JLabel lbIdCliente;
     private javax.swing.JLabel lbNomeDisco;
+    private javax.swing.JLabel lbQtdeDisponivelDisco;
+    private javax.swing.JLabel lbQuantidadeVendida;
+    private javax.swing.JLabel lbValorDisco;
+    private javax.swing.JLabel lbValorTotalVenda;
     private javax.persistence.EntityManager lojaPUEntityManager;
     private javax.swing.JPanel panelBotoesAutor;
+    private javax.swing.JPanel panelDadosCliente;
+    private javax.swing.JPanel panelDadosDisco;
     private javax.swing.JPanel panelDadosVenda;
-    private javax.swing.JPanel panelDisco;
-    private javax.swing.JPanel panelDisco1;
+    private javax.swing.JPanel panelVendaDados;
+    private javax.swing.JPanel panelVendasList;
+    private javax.swing.JTextField tfAutor;
     private javax.swing.JTextField tfCPFCliente;
     private javax.swing.JTextField tfIdAutor;
     private javax.swing.JTextField tfIdCliente;
-    private javax.swing.JTextField tfNomeAutor;
-    private javax.swing.JTextField tfOrigemAutor;
+    private javax.swing.JTextField tfNomeDisco;
+    private javax.swing.JTextField tfQtdeDisponivelDisco;
+    private javax.swing.JTextField tfQtdeVendida;
+    private javax.swing.JTextField tfValorDisco;
+    private javax.swing.JTextField tfValorTotalVenda;
     private java.util.List<view.Venda> vendaList;
     private java.util.List<view.Venda> vendaList1;
     private javax.persistence.Query vendaQuery;
