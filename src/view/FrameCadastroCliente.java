@@ -5,6 +5,13 @@
  */
 package view;
 
+import controller.ClienteController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.Cliente;
+
 /**
  *
  * @author Duda
@@ -38,6 +45,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         tfClienteIdade = new javax.swing.JTextField();
         lbClienteTelefone = new javax.swing.JLabel();
         ftfClienteTelefone = new javax.swing.JFormattedTextField();
+        jPanel1 = new javax.swing.JPanel();
         lbClienteCep = new javax.swing.JLabel();
         ftfClienteCep = new javax.swing.JFormattedTextField();
         lbClienteEnderecoLogradouro = new javax.swing.JLabel();
@@ -73,6 +81,11 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ftfClienteCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftfClienteCPFActionPerformed(evt);
+            }
+        });
 
         lbClienteIdade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbClienteIdade.setText("Idade: ");
@@ -86,8 +99,11 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.gray), "Endereço", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
         lbClienteCep.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbClienteCep.setText("Cep:");
+        lbClienteCep.setText("CEP: ");
 
         try {
             ftfClienteCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -99,7 +115,6 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         lbClienteEnderecoLogradouro.setText("Logradouro: ");
 
         tfClienteEnderecoLogradouro.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        tfClienteEnderecoLogradouro.setEnabled(false);
 
         lbClienteEnderecoNumero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbClienteEnderecoNumero.setText("Número: ");
@@ -116,7 +131,6 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         lbClienteEnderecoBairro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbClienteEnderecoBairro.setText("Bairro: ");
 
-        tfClienteEnderecoBairro.setEnabled(false);
         tfClienteEnderecoBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfClienteEnderecoBairroActionPerformed(evt);
@@ -126,7 +140,6 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         lbClienteEnderecoCidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbClienteEnderecoCidade.setText("Cidade:");
 
-        tfClienteEnderecoCidade.setEnabled(false);
         tfClienteEnderecoCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfClienteEnderecoCidadeActionPerformed(evt);
@@ -136,12 +149,80 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         lbClienteEnderecoUF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbClienteEnderecoUF.setText("UF:");
 
-        tfClienteEnderecoUF.setEnabled(false);
         tfClienteEnderecoUF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfClienteEnderecoUFActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbClienteEnderecoBairro)
+                    .addComponent(lbClienteEnderecoNumero)
+                    .addComponent(lbClienteCep))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ftfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(tfClienteEnderecoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lbClienteEnderecoCidade)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tfClienteEnderecoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lbClienteEnderecoUF)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tfClienteEnderecoUF))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(tfClienteEnderecoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbClienteEnderecoComplemento)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tfClienteEnderecoComplemento))
+                        .addComponent(tfClienteEnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lbClienteEnderecoLogradouro)
+                    .addContainerGap(449, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbClienteCep)
+                    .addComponent(ftfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(tfClienteEnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbClienteEnderecoNumero)
+                    .addComponent(tfClienteEnderecoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbClienteEnderecoComplemento)
+                    .addComponent(tfClienteEnderecoComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbClienteEnderecoBairro)
+                    .addComponent(tfClienteEnderecoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbClienteEnderecoCidade)
+                    .addComponent(tfClienteEnderecoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbClienteEnderecoUF)
+                    .addComponent(tfClienteEnderecoUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(53, 53, 53)
+                    .addComponent(lbClienteEnderecoLogradouro)
+                    .addContainerGap(83, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout panelDadosClienteLayout = new javax.swing.GroupLayout(panelDadosCliente);
         panelDadosCliente.setLayout(panelDadosClienteLayout);
@@ -150,57 +231,26 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             .addGroup(panelDadosClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDadosClienteLayout.createSequentialGroup()
-                        .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lbClienteCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbClienteNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lbClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosClienteLayout.createSequentialGroup()
+                        .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lbClienteCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbClienteNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
                         .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDadosClienteLayout.createSequentialGroup()
-                                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ftfClienteCep, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ftfClienteCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                .addComponent(ftfClienteCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lbClienteIdade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfClienteIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(47, 47, 47)
+                                .addComponent(lbClienteTelefone)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ftfClienteTelefone))
                             .addComponent(tfClienteNome)))
                     .addGroup(panelDadosClienteLayout.createSequentialGroup()
-                        .addComponent(lbClienteEnderecoLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelDadosClienteLayout.createSequentialGroup()
-                                .addComponent(lbClienteEnderecoUF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfClienteEnderecoUF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfClienteEnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelDadosClienteLayout.createSequentialGroup()
-                        .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbClienteEnderecoNumero)
-                            .addComponent(lbClienteEnderecoBairro))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelDadosClienteLayout.createSequentialGroup()
-                                .addComponent(tfClienteEnderecoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbClienteEnderecoComplemento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfClienteEnderecoComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelDadosClienteLayout.createSequentialGroup()
-                                .addComponent(tfClienteEnderecoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbClienteEnderecoCidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfClienteEnderecoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosClienteLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbClienteTelefone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ftfClienteTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelDadosClienteLayout.setVerticalGroup(
@@ -222,29 +272,9 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
                                 .addComponent(ftfClienteTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(tfClienteIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbClienteIdade))
-                .addGap(41, 41, 41)
-                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftfClienteCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbClienteCep))
-                .addGap(18, 18, 18)
-                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfClienteEnderecoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbClienteEnderecoLogradouro))
-                .addGap(14, 14, 14)
-                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbClienteEnderecoNumero)
-                    .addComponent(tfClienteEnderecoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbClienteEnderecoComplemento)
-                    .addComponent(tfClienteEnderecoComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbClienteEnderecoBairro)
-                    .addComponent(tfClienteEnderecoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbClienteEnderecoCidade)
-                    .addComponent(tfClienteEnderecoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbClienteEnderecoUF)
-                    .addComponent(tfClienteEnderecoUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         panelBotoesCliente.setBackground(new java.awt.Color(255, 255, 255));
@@ -268,6 +298,11 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
 
         btClienteSalvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btClienteSalvar.setText("Salvar");
+        btClienteSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClienteSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBotoesClienteLayout = new javax.swing.GroupLayout(panelBotoesCliente);
         panelBotoesCliente.setLayout(panelBotoesClienteLayout);
@@ -297,16 +332,15 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBotoesCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelBotoesCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelDadosCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelDadosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBotoesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(panelBotoesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -335,7 +369,56 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
 
     private void btClienteLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteLimparActionPerformed
         // TODO add your handling code here:
+        tfClienteNome.setText("");
+        tfClienteIdade.setText("");
+        tfClienteEnderecoBairro.setText("");
+        tfClienteEnderecoCidade.setText("");
+        tfClienteEnderecoComplemento.setText("");
+        tfClienteEnderecoLogradouro.setText("");
+        tfClienteEnderecoNumero.setText("");
+        tfClienteEnderecoUF.setText("");
+        ftfClienteCPF.setText("");
+        ftfClienteCep.setText("");
+        ftfClienteTelefone.setText("");
     }//GEN-LAST:event_btClienteLimparActionPerformed
+
+    private void ftfClienteCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfClienteCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftfClienteCPFActionPerformed
+
+    private void btClienteSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteSalvarActionPerformed
+        // TODO add your handling code here:
+        Cliente cliente = new Cliente();
+        ClienteController cCliente = new ClienteController();
+
+        try {
+            cliente.setNome(tfClienteNome.getText());
+            cliente.setCpf(ftfClienteCPF.getText());
+            cliente.setIdade(Integer.parseInt(tfClienteIdade.getText()));
+            cliente.setTelefone(ftfClienteTelefone.getText());
+            cliente.setCep(ftfClienteCep.getText());
+            cliente.setLogradouro(tfClienteEnderecoLogradouro.getText());
+            cliente.setNumero(Integer.parseInt(tfClienteEnderecoNumero.getText()));
+            cliente.setBairro(tfClienteEnderecoBairro.getText());
+            cliente.setCidade(tfClienteEnderecoCidade.getText());
+            cliente.setUf(tfClienteEnderecoUF.getText());
+            cliente.setComplemento(tfClienteEnderecoComplemento.getText());
+        } catch (ArithmeticException a) {
+            JOptionPane.showMessageDialog(this,
+                    "Os campos idade e número são campos numéricos, preencha-os corretamente!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro!");
+        }
+
+        try {
+            cCliente.criarCliente(cliente);
+            btClienteLimparActionPerformed(evt);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(FrameCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro!");
+        }
+
+    }//GEN-LAST:event_btClienteSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,6 +470,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField ftfClienteCPF;
     private javax.swing.JFormattedTextField ftfClienteCep;
     private javax.swing.JFormattedTextField ftfClienteTelefone;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbClienteCep;
     private javax.swing.JLabel lbClienteCpf;
     private javax.swing.JLabel lbClienteEnderecoBairro;

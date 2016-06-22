@@ -25,7 +25,6 @@ public class DiscoDAO {
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         comando = conexao.prepareStatement(sql);
 
-        //comando.setInt(1, autor.getId()); // mudar para adicionar codigo automaticamente
         comando.setString(1, disco.getNome());
         comando.setString(2, disco.getGenero());
         comando.setInt(3, disco.getAnoLancamento());

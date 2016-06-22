@@ -24,24 +24,32 @@ public class ClienteDAO {
         conexao = ConnectionFactory.createConnection();
         
         //ver colunas das tabelas
-        String sql = "INSERT INTO Cliente (id, nome, cpf, idade, telefone, endereco) " 
-                + "VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Cliente ("
+                + "nome, cpf, idade, telefone, cep, logradouro, numero, "
+                + "bairro, cidade, uf, complemento)" 
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         
         comando = conexao.prepareStatement(sql);
         
-        comando.setLong(1, cliente.getId());
-        comando.setString(2, cliente.getNome());
-        comando.setString(3, cliente.getCpf());
-        comando.setInt(4, cliente.getTelefone());
-        comando.setInt(5, cliente.getIdade());
-        comando.setString(6, cliente.getEndereco());
+        comando.setString(1, cliente.getNome());
+        comando.setString(2, cliente.getCpf());
+        comando.setInt(3, cliente.getIdade());
+        comando.setString(4, cliente.getTelefone());
+        comando.setString(5, cliente.getCep());
+        comando.setString(6, cliente.getLogradouro());
+        comando.setInt(7, cliente.getNumero());
+        comando.setString(8, cliente.getBairro());
+        comando.setString(9, cliente.getCidade());
+        comando.setString(10, cliente.getUf());
+        comando.setString(11, cliente.getComplemento());
 
-        //Executando comando        
-        if(comando.execute() == true)
-            JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
+        //Executando comando   
+        int retorno = comando.executeUpdate();
+        if(retorno > 0)
+            JOptionPane.showMessageDialog(null, "Dados Inseridos com sucesso!");
         else
-            JOptionPane.showMessageDialog(null, "Não foi possível inserir os dados do cliente");
-        
+            JOptionPane.showMessageDialog(null, "Não foi possível inserir os dados do cliente!");
+
         //fechando a conexao
         conexao.close();
     }

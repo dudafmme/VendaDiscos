@@ -197,6 +197,9 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
 
     private void btAutorLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAutorLimparActionPerformed
         // TODO add your handling code here:
+        tfAutorNome.setText("");
+        tfAutorOrigem.setText("");
+        grupoBanda.clearSelection();
     }//GEN-LAST:event_btAutorLimparActionPerformed
 
     private void btAutorSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAutorSalvarActionPerformed
@@ -209,9 +212,7 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
  
         try {
             cAutor.criarAutor(autor);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameCadastroAutor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(FrameCadastroAutor.class.getName()).log(Level.SEVERE, null, ex);
         }
         

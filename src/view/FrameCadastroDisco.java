@@ -105,7 +105,7 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
         lbQtdeDiscoDisponivel.setText("Qtde Disponível: ");
 
         lbPrecoDisco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbPrecoDisco.setText("Preço: ");
+        lbPrecoDisco.setText("Preço: (R$) ");
 
         panelFoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Capa do Disco", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -167,7 +167,7 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
                     .addComponent(tfOrigemAutor)
                     .addGroup(panelAutorLayout.createSequentialGroup()
                         .addComponent(tfIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btBuscarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -198,50 +198,49 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosDiscoLayout.createSequentialGroup()
-                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbQtdeDiscoDisponivel)
-                            .addComponent(lbGeneroMusical, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfGeneroMusical)
-                            .addComponent(tfQtdeDiscoDisponivel))
-                        .addGap(10, 10, 10)
-                        .addComponent(lbAnoLancamentoDisco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfAnoLancamentoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
-                        .addComponent(lbDiscoDisponivel)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbDisponivelSim)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbDisponivelNao)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosDiscoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfNomeDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosDiscoLayout.createSequentialGroup()
                         .addComponent(panelAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
                         .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelDadosDiscoLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addComponent(lbDiscoDisponivel)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbDisponivelSim)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbDisponivelNao))
+                            .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                                .addGap(342, 342, 342)
                                 .addComponent(lbPrecoDisco)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfPrecoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(tfPrecoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbQtdeDiscoDisponivel)
+                                .addComponent(lbGeneroMusical, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDadosDiscoLayout.createSequentialGroup()
+                                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfGeneroMusical)
+                                    .addComponent(tfQtdeDiscoDisponivel))
+                                .addGap(10, 10, 10)
+                                .addComponent(lbAnoLancamentoDisco)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfAnoLancamentoDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfNomeDisco))))
                 .addContainerGap())
         );
         panelDadosDiscoLayout.setVerticalGroup(
             panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDadosDiscoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfNomeDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelDadosDiscoLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lbNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(panelDadosDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbGeneroMusical)
@@ -342,6 +341,16 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
 
     private void btLimparDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparDiscoActionPerformed
         // TODO add your handling code here:
+        tfNomeDisco.setText("");
+        tfGeneroMusical.setText("");
+        tfAnoLancamentoDisco.setText("");
+        tfPrecoDisco.setText("");
+        tfQtdeDiscoDisponivel.setText("");
+        tfIdAutor.setText("");
+        rbDisponivelSim.setSelected(true);
+        tfNomeAutor.setText("");
+        tfOrigemAutor.setText("");
+        grupoDisponivel.clearSelection();
     }//GEN-LAST:event_btLimparDiscoActionPerformed
 
     private void btSalvarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarDiscoActionPerformed
@@ -378,11 +387,12 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
         }
         try {
             cDisco.criarDisco(disco);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameCadastroDisco.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+            btLimparDiscoActionPerformed(evt);
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(FrameCadastroDisco.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //  }
+        
         //  }
     }//GEN-LAST:event_btSalvarDiscoActionPerformed
 
