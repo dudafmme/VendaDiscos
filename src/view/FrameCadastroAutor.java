@@ -212,11 +212,12 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
  
         try {
             cAutor.criarAutor(autor);
+            btAutorLimparActionPerformed(evt);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(FrameCadastroAutor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+         
     }//GEN-LAST:event_btAutorSalvarActionPerformed
 
     /**

@@ -6,7 +6,9 @@
 package controller;
 
 import dao.DiscoDAO;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.Disco;
 
 /**
@@ -21,5 +23,12 @@ public class DiscoController {
         discoDAO.inserirNovoDisco(disco);
         
     }
+    public ResultSet buscarDisco(String nomeDisco, String nomeAutor) throws ClassNotFoundException, SQLException {
+        ResultSet rs;
+        DiscoDAO discoDAO = new DiscoDAO();
+        rs = discoDAO.buscarDisco(nomeDisco, nomeAutor);
+        if (!rs.first())
+            JOptionPane.showMessageDialog(null, "Disco não encontrado!");
+        return rs;
+    }
 }    
-

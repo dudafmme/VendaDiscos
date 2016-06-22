@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Cliente;
@@ -52,5 +53,14 @@ public class ClienteDAO {
 
         //fechando a conexao
         conexao.close();
+    }
+    
+    public ResultSet buscarCliente(String cpf) throws ClassNotFoundException, SQLException {
+        ResultSet rs;
+        conexao = ConnectionFactory.createConnection();
+        String sql = "SELECT * FROM cliente WHERE cpf = '" + cpf + "'";
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
     }
 }

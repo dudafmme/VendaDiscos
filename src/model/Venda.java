@@ -12,10 +12,9 @@ public class Venda {
     private Cliente cliente;
     private Disco disco;
     private int qtdeVenda;
-    private boolean desconto;
-    private Double valorTotal;
-    private Double valorDesconto;
-    private Calendar dataVenda;
+    private Float valorTotal;
+    private String dataVenda;
+    private Float valorDsco;
 
     public Venda() {
     }
@@ -27,7 +26,7 @@ public class Venda {
     public void setNumeroVenda(Long numeroVenda) {
         this.numeroVenda = numeroVenda;
     }
-    
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -52,36 +51,28 @@ public class Venda {
         this.qtdeVenda = qtdeVenda;
     }
 
-    public boolean isDesconto() {
-        return desconto;
-    }
-
-    public void setDesconto(boolean desconto) {
-        this.desconto = desconto;
-    }
-
-    public Double getValorTotal() {
+    public Float getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(Double valorTotal) {
+    public void setValorTotal(Float valorTotal) {
         this.valorTotal = valorTotal;
     }
 
-    public Double getValorDesconto() {
-        return valorDesconto;
-    }
-
-    public void setValorDesconto(Double valorDesconto) {
-        this.valorDesconto = valorDesconto;
-    }
-
-    public Calendar getDataVenda() {
+    public String getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(Calendar dataVenda) {
+    public void setDataVenda(String dataVenda) {
         this.dataVenda = dataVenda;
     }
-    
+
+    public Float getValorDsco() {
+        return valorDsco;
+    }
+
+    public void setValorDsco(Float valorDsco) {
+        this.valorDsco = valorDsco;
+    }
+
 }

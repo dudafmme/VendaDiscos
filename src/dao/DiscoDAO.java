@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Disco;
@@ -42,5 +43,18 @@ public class DiscoDAO {
 
         //fechando a conexao
         conexao.close();
+    }
+    
+    public ResultSet buscarDisco(String nomeDisco, String nomeAutor) throws ClassNotFoundException, SQLException {
+        ResultSet rs;
+        conexao = ConnectionFactory.createConnection();
+
+        String sql = "SELECT d.id, d.nome, a.nome, d.qtdeDisponivel, d.preco "
+                + "FROM disco d, autor a "
+                + "WHERE d.nome = '"+ nomeDisco +"' "
+                + "AND a.nome = '"+ nomeAutor +"'";
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
     }
 }

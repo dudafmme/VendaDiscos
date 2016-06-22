@@ -224,6 +224,8 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuVendasEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasEfetuarActionPerformed
         // TODO add your handling code here:
+        FrameEfetuarVenda frameEfetuarVenda = new FrameEfetuarVenda(this, rootPaneCheckingEnabled);
+        frameEfetuarVenda.setVisible(true);
     }//GEN-LAST:event_jMenuVendasEfetuarActionPerformed
 
     private void jMenuVendasConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasConsultarActionPerformed

@@ -1,71 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="grupoDisponivel">
-    </Component>
-    <Component class="javax.persistence.EntityManager" name="lojaPUEntityManager">
+    <Container class="javax.swing.JPanel" name="panelVendasList">
       <Properties>
-        <Property name="persistenceUnit" type="java.lang.String" value="lojaPU"/>
-      </Properties>
-    </Component>
-    <Component class="javax.persistence.Query" name="vendaQuery">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT v FROM Venda v"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="lojaPUEntityManager"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="2" title="Vendas">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder>
+                  <Color PropertyName="highlight" blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
+                  <Color PropertyName="shadow" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
+                </EtchetBorder>
+              </Border>
+              <Font PropertyName="font" name="Segoe UI Black" size="12" style="0"/>
+            </TitledBorder>
+          </Border>
         </Property>
       </Properties>
-    </Component>
-    <Component class="java.util.List" name="vendaList">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="vendaQuery"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;view.Venda&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.persistence.Query" name="vendaQuery1">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT v FROM Venda v"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="lojaPUEntityManager"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="java.util.List" name="vendaList1">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="vendaQuery1"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;view.Venda&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.persistence.Query" name="clienteQuery">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT c FROM Cliente c"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="lojaPUEntityManager"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="java.util.List" name="clienteList">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="clienteQuery"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;view.Cliente&gt;"/>
-      </AuxValues>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="601" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="fa" green="fa" red="fa" type="rgb"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -86,14 +61,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="panelDadosVenda" max="32767" attributes="0"/>
                   <Component id="panelBotoesAutor" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelVendasList" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelVendasList1" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -104,7 +79,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="panelBotoesAutor" min="-2" max="-2" attributes="0"/>
           </Group>
-          <Component id="panelVendasList" max="32767" attributes="0"/>
+          <Component id="panelVendasList1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -130,14 +105,13 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="panelDadosDisco" min="-2" pref="285" max="-2" attributes="0"/>
-                          <Component id="panelDadosCliente" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="panelDadosDisco" min="-2" pref="285" max="-2" attributes="0"/>
                       <Component id="panelVendaDados" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelDadosCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -175,24 +149,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbAutor" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbNomeDisco" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfAutor" max="32767" attributes="0"/>
-                                  <Component id="tfNomeDisco" max="32767" attributes="0"/>
+                                  <Component id="tfAutor" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfNomeDisco" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbIdAutor" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbIdDisco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="tfIdAutor" min="-2" pref="75" max="-2" attributes="0"/>
+                              <Component id="tfIdDisco" min="-2" pref="75" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btBuscarDisco" min="-2" pref="147" max="-2" attributes="0"/>
                           </Group>
@@ -232,8 +206,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbIdAutor" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfIdAutor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbIdDisco" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfIdDisco" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btBuscarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="57" max="32767" attributes="0"/>
@@ -273,12 +247,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarDiscoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfIdAutor">
+            <Component class="javax.swing.JTextField" name="tfIdDisco">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbIdAutor">
+            <Component class="javax.swing.JLabel" name="lbIdDisco">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
@@ -334,15 +308,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="lbIdCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="tfIdCliente" min="-2" pref="69" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lbCPFCliente" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="lbCPFCliente" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -358,8 +332,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfCPFCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbCPFCliente" alignment="3" max="32767" attributes="0"/>
+                          <Component id="tfCPFCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -405,7 +379,15 @@
                 <Property name="text" type="java.lang.String" value="CPF do Cliente: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCPFCliente">
+            <Component class="javax.swing.JFormattedTextField" name="tfCPFCliente">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="###.###.###-##" subtype="-1" type="5"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCPFClienteActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -429,7 +411,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -443,8 +425,8 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfValorTotalVenda" max="32767" attributes="0"/>
-                                  <Component id="tfQtdeVendida" max="32767" attributes="0"/>
+                                  <Component id="tfValorTotalVenda" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfQtdeVendida" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -530,12 +512,12 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btSalvarDisco" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btSalvarVenda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btLimparDisco" min="-2" max="-2" attributes="0"/>
+                  <Component id="btLimparVenda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btVoltarDisco" min="-2" max="-2" attributes="0"/>
+                  <Component id="btVoltarVenda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -543,19 +525,19 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btVoltarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btLimparDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btSalvarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btVoltarVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btLimparVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btSalvarVenda" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btVoltarDisco">
+        <Component class="javax.swing.JButton" name="btVoltarVenda">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
@@ -563,10 +545,10 @@
             <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltarDiscoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltarVendaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btLimparDisco">
+        <Component class="javax.swing.JButton" name="btLimparVenda">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
@@ -574,10 +556,10 @@
             <Property name="text" type="java.lang.String" value="Limpar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimparDiscoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimparVendaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btSalvarDisco">
+        <Component class="javax.swing.JButton" name="btSalvarVenda">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
@@ -585,12 +567,12 @@
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarDiscoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarVendaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="panelVendasList">
+    <Container class="javax.swing.JPanel" name="panelVendasList1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -613,52 +595,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPaneVendas" pref="876" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="901" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPaneVendas" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPaneVendas">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="jTableVendas">
-              <BindingProperties>
-                <BindingProperty name="elements" source="vendaList1" target="jTableVendas" targetPath="elements" updateStrategy="0" immediately="true">
-                  <Subbinding sourcePath="${id}">
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Long.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${qtdeVendida}">
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${valorTotal}">
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Float.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${dataVenda}">
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-                  </Subbinding>
-                </BindingProperty>
-              </BindingProperties>
-            </Component>
-          </SubComponents>
-        </Container>
-      </SubComponents>
     </Container>
   </SubComponents>
 </Form>
