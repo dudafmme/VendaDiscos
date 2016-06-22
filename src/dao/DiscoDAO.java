@@ -57,4 +57,15 @@ public class DiscoDAO {
         rs = comando.executeQuery(sql);
         return rs;
     }
+    
+    public ResultSet buscarDiscoCompleto(String nomeDisco) throws ClassNotFoundException, SQLException {
+        ResultSet rs;
+        conexao = ConnectionFactory.createConnection();
+        String sql = "SELECT * FROM disco d, autor a  "
+                + "WHERE d.nome = '" + nomeDisco + "' "
+                + "AND d.autor_id = a.id";
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
+    }
 }

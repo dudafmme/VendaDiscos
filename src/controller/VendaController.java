@@ -22,7 +22,7 @@ public class VendaController {
         vendaDAO.inserirNovaVenda(venda);
     }
     
-    public void atualizarEstoque(String qtde, String id) throws ClassNotFoundException{
+    public void atualizarEstoque(String qtde, String id) throws ClassNotFoundException, SQLException{
         VendaDAO vendaDAO = new VendaDAO();
         vendaDAO.atualizarEstoque(qtde, id);
     }

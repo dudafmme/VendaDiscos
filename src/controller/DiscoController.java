@@ -9,6 +9,7 @@ import dao.DiscoDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import model.Disco;
 
 /**
@@ -27,6 +28,15 @@ public class DiscoController {
         ResultSet rs;
         DiscoDAO discoDAO = new DiscoDAO();
         rs = discoDAO.buscarDisco(nomeDisco, nomeAutor);
+        if (!rs.first())
+            JOptionPane.showMessageDialog(null, "Disco não encontrado!");
+        return rs;
+    }
+    
+    public ResultSet buscarDiscoCompleto(String nomeDisco) throws ClassNotFoundException, SQLException {
+        ResultSet rs;
+        DiscoDAO discoDAO = new DiscoDAO();
+        rs = discoDAO.buscarDiscoCompleto(nomeDisco);
         if (!rs.first())
             JOptionPane.showMessageDialog(null, "Disco não encontrado!");
         return rs;

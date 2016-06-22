@@ -64,6 +64,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         btClienteVoltar = new javax.swing.JButton();
         btClienteLimpar = new javax.swing.JButton();
         btClienteSalvar = new javax.swing.JButton();
+        btBuscarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -304,12 +305,22 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             }
         });
 
+        btBuscarCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btBuscarCliente.setText("Buscar");
+        btBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBotoesClienteLayout = new javax.swing.GroupLayout(panelBotoesCliente);
         panelBotoesCliente.setLayout(panelBotoesClienteLayout);
         panelBotoesClienteLayout.setHorizontalGroup(
             panelBotoesClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotoesClienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btClienteSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btClienteLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,7 +335,8 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
                 .addGroup(panelBotoesClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btClienteVoltar)
                     .addComponent(btClienteLimpar)
-                    .addComponent(btClienteSalvar))
+                    .addComponent(btClienteSalvar)
+                    .addComponent(btBuscarCliente))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -420,6 +432,10 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btClienteSalvarActionPerformed
 
+    private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btBuscarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -464,6 +480,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btBuscarCliente;
     private javax.swing.JButton btClienteLimpar;
     private javax.swing.JButton btClienteSalvar;
     private javax.swing.JButton btClienteVoltar;
