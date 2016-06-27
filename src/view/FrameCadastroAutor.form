@@ -199,6 +199,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btAutorBuscar" min="-2" pref="111" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btAutorSalvar" min="-2" pref="111" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btAutorLimpar" min="-2" pref="111" max="-2" attributes="0"/>
@@ -216,6 +218,7 @@
                       <Component id="btAutorVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btAutorLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btAutorSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btAutorBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
@@ -254,6 +257,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAutorSalvarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btAutorBuscar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAutorBuscarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

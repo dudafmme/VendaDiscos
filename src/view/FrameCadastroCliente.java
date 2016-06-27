@@ -419,6 +419,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             cliente.setCidade(tfClienteEnderecoCidade.getText());
             cliente.setUf(tfClienteEnderecoUF.getText());
             cliente.setComplemento(tfClienteEnderecoComplemento.getText());
+            
         } catch (ArithmeticException a) {
             JOptionPane.showMessageDialog(this,
                     "Idade e número são campos numéricos, preencha-os corretamente!");

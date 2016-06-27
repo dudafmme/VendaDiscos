@@ -7,6 +7,7 @@ package view;
 
 import controller.AutorController;
 import controller.ClienteController;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,9 @@ import model.Autor;
  */
 public class FrameCadastroAutor extends javax.swing.JDialog {
 
+    AutorController cAutor;
+    Autor autor;
+    ResultSet rs;
     /**
      * Creates new form CadastroAutor
      */
@@ -49,6 +53,7 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
         btAutorVoltar = new javax.swing.JButton();
         btAutorLimpar = new javax.swing.JButton();
         btAutorSalvar = new javax.swing.JButton();
+        btAutorBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -148,12 +153,22 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
             }
         });
 
+        btAutorBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btAutorBuscar.setText("Buscar");
+        btAutorBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAutorBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBotoesAutorLayout = new javax.swing.GroupLayout(panelBotoesAutor);
         panelBotoesAutor.setLayout(panelBotoesAutorLayout);
         panelBotoesAutorLayout.setHorizontalGroup(
             panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotoesAutorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btAutorBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btAutorSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btAutorLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +183,8 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
                 .addGroup(panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAutorVoltar)
                     .addComponent(btAutorLimpar)
-                    .addComponent(btAutorSalvar))
+                    .addComponent(btAutorSalvar)
+                    .addComponent(btAutorBuscar))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -200,12 +216,13 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
         tfAutorNome.setText("");
         tfAutorOrigem.setText("");
         grupoBanda.clearSelection();
+        btAutorSalvar.setVisible(true);
     }//GEN-LAST:event_btAutorLimparActionPerformed
 
     private void btAutorSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAutorSalvarActionPerformed
         // TODO add your handling code here:
-        AutorController cAutor = new AutorController();
-        Autor autor = new Autor();
+        cAutor = new AutorController();
+        autor = new Autor();
         autor.setNome(tfAutorNome.getText());
         autor.setOrigem(tfAutorOrigem.getText());
         autor.setBanda(rbAutorBandaSim.isSelected());
@@ -219,6 +236,23 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
         
          
     }//GEN-LAST:event_btAutorSalvarActionPerformed
+
+    private void btAutorBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAutorBuscarActionPerformed
+        // TODO add your handling code here:
+        cAutor = new AutorController();
+        autor = new Autor();
+        String nome = tfAutorNome.getText();
+        try {
+            rs = cAutor.buscarAutorPorNome(nome);
+            tfAutorOrigem.setText(rs.getString("origem"));
+            rbAutorBandaSim.setSelected(rs.getBoolean("banda"));
+            rbAutorBandaNao.setSelected(!rs.getBoolean("banda"));
+            btAutorSalvar.setVisible(false);
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FrameCadastroAutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btAutorBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +298,7 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAutorBuscar;
     private javax.swing.JButton btAutorLimpar;
     private javax.swing.JButton btAutorSalvar;
     private javax.swing.JButton btAutorVoltar;

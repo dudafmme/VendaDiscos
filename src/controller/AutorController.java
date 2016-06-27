@@ -16,17 +16,30 @@ import model.Autor;
  * @author Duda
  */
 public class AutorController {
-    public void criarAutor(Autor autor) throws SQLException, ClassNotFoundException{
+    ResultSet rs;
+    AutorDAO autorDAO;
+    
+    public void criarAutor(Autor autor) 
+            throws SQLException, ClassNotFoundException{
         
 //        Validação com regras
-        AutorDAO autorDAO = new AutorDAO();
+        autorDAO = new AutorDAO();
         autorDAO.inserirNovoAutor(autor);   
     }
     
-    public ResultSet buscarAutor(String nome, String origem) throws ClassNotFoundException, SQLException {
-        ResultSet rs;
-        AutorDAO autorDAO = new AutorDAO();
+    public ResultSet buscarAutor(String nome, String origem) 
+            throws ClassNotFoundException, SQLException {
+        autorDAO = new AutorDAO();
         rs = autorDAO.buscarAutor(nome, origem);
+        if (!rs.first())
+            JOptionPane.showMessageDialog(null, "Autor não encontrado!");
+        return rs;
+    }
+    
+    public ResultSet buscarAutorPorNome(String nome) 
+            throws ClassNotFoundException, SQLException{
+        autorDAO = new AutorDAO();
+        rs = autorDAO.buscarAutorPorNome(nome);
         if (!rs.first())
             JOptionPane.showMessageDialog(null, "Autor não encontrado!");
         return rs;

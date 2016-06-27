@@ -15,12 +15,14 @@ public class AutorDAO {
 
     Connection conexao;
     PreparedStatement comando;
+    ResultSet rs;
+    String sql;
 
     //Método para inserir um novo autor
     public void inserirNovoAutor(Autor autor) throws SQLException, ClassNotFoundException {
         conexao = ConnectionFactory.createConnection();
 
-        String sql = "INSERT INTO autor (nome, origem, banda) VALUES (? , ? , ?)";
+        sql = "INSERT INTO autor (nome, origem, banda) VALUES (? , ? , ?)";
         comando = conexao.prepareStatement(sql);
         comando.setString(1, autor.getNome());
         comando.setString(2, autor.getOrigem());
@@ -38,9 +40,16 @@ public class AutorDAO {
     }
 
     public ResultSet buscarAutor(String nome, String origem) throws ClassNotFoundException, SQLException {
-        ResultSet rs;
         conexao = ConnectionFactory.createConnection();
-        String sql = "SELECT * FROM autor WHERE nome = '" + nome + "' AND origem = '" + origem + "'";
+        sql = "SELECT * FROM autor WHERE nome = '" + nome + "' AND origem = '" + origem + "'";
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
+    }
+    
+    public ResultSet buscarAutorPorNome(String nome) throws ClassNotFoundException, SQLException{
+        conexao = ConnectionFactory.createConnection();
+        sql = "SELECT * FROM autor WHERE nome = '" + nome + "'";
         comando = conexao.prepareStatement(sql);
         rs = comando.executeQuery(sql);
         return rs;
