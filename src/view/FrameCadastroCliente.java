@@ -395,6 +395,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         ftfClienteCPF.setText("");
         ftfClienteCep.setText("");
         ftfClienteTelefone.setText("");
+        btClienteSalvar.setVisible(true);
     }//GEN-LAST:event_btClienteLimparActionPerformed
 
     private void ftfClienteCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfClienteCPFActionPerformed
@@ -420,7 +421,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             cliente.setComplemento(tfClienteEnderecoComplemento.getText());
         } catch (ArithmeticException a) {
             JOptionPane.showMessageDialog(this,
-                    "Os campos idade e número são campos numéricos, preencha-os corretamente!");
+                    "Idade e número são campos numéricos, preencha-os corretamente!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro!");
         }
@@ -451,6 +452,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             tfClienteEnderecoComplemento.setText(rs.getString("complemento"));
             tfClienteEnderecoCidade.setText(rs.getString("cidade"));
             tfClienteEnderecoBairro.setText("bairro");
+            btClienteSalvar.setVisible(false);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FrameEfetuarVenda.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -21,17 +21,15 @@ public class VendaDAO {
         conexao = ConnectionFactory.createConnection();
 
         String sql = "INSERT INTO venda ("
-                + "qtdeVendida, valorTotal, dataVenda, cliente_id, "
-                + "disco_id, disco_valor) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+                + "qtdeVendida, valorTotal, dataVenda, "
+                + "cliente_id, disco_id) "
+                + "VALUES (?, ?, ?, ?, ?)";
         comando = conexao.prepareStatement(sql);
-
         comando.setInt(1, venda.getQtdeVenda());
         comando.setFloat(2, venda.getValorTotal());
         comando.setString(3, venda.getDataVenda());
         comando.setLong(4, venda.getCliente().getId());
         comando.setLong(5, venda.getDisco().getId());
-        comando.setFloat(6, venda.getValorDsco());
 
         //Executando comando   
         int retorno = comando.executeUpdate();

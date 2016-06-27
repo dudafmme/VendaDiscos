@@ -530,13 +530,12 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         venda.setDataVenda(dataAtual);
         venda.setCliente(cliente);
         venda.setDisco(disco);
-        venda.setValorDsco(disco.getPreco());
 
         qtde = Integer.toString(qtdeDisponivel - qtdeVendida);
         
         try {
             cVenda.efetuarVenda(venda);
-            JOptionPane.showMessageDialog(this, "dados"+qtde);
+            //JOptionPane.showMessageDialog(this, "dados"+qtde);
             cVenda.atualizarEstoque(qtde, idDisco);
 
             btLimparVendaActionPerformed(evt);

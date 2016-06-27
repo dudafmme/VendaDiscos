@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Calendar;
-
 /**
  *
  * @author Duda
@@ -14,7 +12,6 @@ public class Venda {
     private int qtdeVenda;
     private Float valorTotal;
     private String dataVenda;
-    private Float valorDsco;
 
     public Venda() {
     }
@@ -66,13 +63,4 @@ public class Venda {
     public void setDataVenda(String dataVenda) {
         this.dataVenda = dataVenda;
     }
-
-    public Float getValorDsco() {
-        return valorDsco;
-    }
-
-    public void setValorDsco(Float valorDsco) {
-        this.valorDsco = valorDsco;
-    }
-
 }
