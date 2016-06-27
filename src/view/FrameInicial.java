@@ -16,7 +16,7 @@ import javax.swing.JLabel;
  * @author Duda
  */
 public class FrameInicial extends javax.swing.JFrame {
-
+    static boolean escolhaFrame;
     /**
      * Creates new form FrameInicial
      */
@@ -41,16 +41,19 @@ public class FrameInicial extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jMenuClientes = new javax.swing.JMenu();
         jMenuClientesCadastrar = new javax.swing.JMenuItem();
+        jMenuClientesBuscarAlterar = new javax.swing.JMenuItem();
         jMenuClientesListar = new javax.swing.JMenuItem();
         jMenuAutores = new javax.swing.JMenu();
         jMenuAutoresCadastrar = new javax.swing.JMenuItem();
+        jMenuAutoresBuscarAlterar = new javax.swing.JMenuItem();
         jMenuAutoresListar = new javax.swing.JMenuItem();
         jMenuDiscos = new javax.swing.JMenu();
         jMenuDiscosCadastrar = new javax.swing.JMenuItem();
+        jMenuDiscosBuscarAlterar = new javax.swing.JMenuItem();
         jMenuDiscosListar = new javax.swing.JMenuItem();
         jMenuVendas = new javax.swing.JMenu();
         jMenuVendasEfetuar = new javax.swing.JMenuItem();
-        jMenuVendasConsultar = new javax.swing.JMenuItem();
+        jMenuVendasConsultarEstornar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Para Vendas De Discos");
@@ -75,6 +78,17 @@ public class FrameInicial extends javax.swing.JFrame {
             }
         });
         jMenuClientes.add(jMenuClientesCadastrar);
+
+        jMenuClientesBuscarAlterar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuClientesBuscarAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuClientesBuscarAlterar.setText("  Buscar / Alterar");
+        jMenuClientesBuscarAlterar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuClientesBuscarAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuClientesBuscarAlterarActionPerformed(evt);
+            }
+        });
+        jMenuClientes.add(jMenuClientesBuscarAlterar);
 
         jMenuClientesListar.setBackground(new java.awt.Color(0, 0, 0));
         jMenuClientesListar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -105,6 +119,17 @@ public class FrameInicial extends javax.swing.JFrame {
         });
         jMenuAutores.add(jMenuAutoresCadastrar);
 
+        jMenuAutoresBuscarAlterar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuAutoresBuscarAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuAutoresBuscarAlterar.setText("  Buscar / Alterar");
+        jMenuAutoresBuscarAlterar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuAutoresBuscarAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAutoresBuscarAlterarActionPerformed(evt);
+            }
+        });
+        jMenuAutores.add(jMenuAutoresBuscarAlterar);
+
         jMenuAutoresListar.setBackground(new java.awt.Color(0, 0, 0));
         jMenuAutoresListar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuAutoresListar.setText("  Listar  ");
@@ -133,6 +158,17 @@ public class FrameInicial extends javax.swing.JFrame {
             }
         });
         jMenuDiscos.add(jMenuDiscosCadastrar);
+
+        jMenuDiscosBuscarAlterar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuDiscosBuscarAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuDiscosBuscarAlterar.setText("  Buscar / Alterar");
+        jMenuDiscosBuscarAlterar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuDiscosBuscarAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDiscosBuscarAlterarActionPerformed(evt);
+            }
+        });
+        jMenuDiscos.add(jMenuDiscosBuscarAlterar);
 
         jMenuDiscosListar.setBackground(new java.awt.Color(0, 0, 0));
         jMenuDiscosListar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -163,16 +199,16 @@ public class FrameInicial extends javax.swing.JFrame {
         });
         jMenuVendas.add(jMenuVendasEfetuar);
 
-        jMenuVendasConsultar.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuVendasConsultar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuVendasConsultar.setText("  Consultar  ");
-        jMenuVendasConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jMenuVendasConsultar.addActionListener(new java.awt.event.ActionListener() {
+        jMenuVendasConsultarEstornar.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuVendasConsultarEstornar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuVendasConsultarEstornar.setText("  Consultar / Estornar  ");
+        jMenuVendasConsultarEstornar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenuVendasConsultarEstornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuVendasConsultarActionPerformed(evt);
+                jMenuVendasConsultarEstornarActionPerformed(evt);
             }
         });
-        jMenuVendas.add(jMenuVendasConsultar);
+        jMenuVendas.add(jMenuVendasConsultarEstornar);
 
         jMenuBar.add(jMenuVendas);
 
@@ -194,6 +230,7 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuAutoresCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresCadastrarActionPerformed
         // TODO add your handling code here:
+        escolhaFrame = true;
         FrameCadastroAutor frameCadastroAutor = new FrameCadastroAutor(this, rootPaneCheckingEnabled);
         frameCadastroAutor.setVisible(true);
     }//GEN-LAST:event_jMenuAutoresCadastrarActionPerformed
@@ -204,8 +241,10 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuClientesCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesCadastrarActionPerformed
         // TODO add your handling code here:
+        escolhaFrame = true;
         FrameCadastroCliente frameCadastroClientes = new FrameCadastroCliente(this, rootPaneCheckingEnabled);
         frameCadastroClientes.setVisible(true);
+        
     }//GEN-LAST:event_jMenuClientesCadastrarActionPerformed
 
     private void jMenuClientesListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesListarActionPerformed
@@ -214,6 +253,7 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuDiscosCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosCadastrarActionPerformed
         // TODO add your handling code here:
+        escolhaFrame = true;
         FrameCadastroDisco frameCadastroDisco = new FrameCadastroDisco(this, rootPaneCheckingEnabled);
         frameCadastroDisco.setVisible(true);
     }//GEN-LAST:event_jMenuDiscosCadastrarActionPerformed
@@ -224,13 +264,40 @@ public class FrameInicial extends javax.swing.JFrame {
 
     private void jMenuVendasEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasEfetuarActionPerformed
         // TODO add your handling code here:
+        escolhaFrame = true;
         FrameEfetuarVenda frameEfetuarVenda = new FrameEfetuarVenda(this, rootPaneCheckingEnabled);
         frameEfetuarVenda.setVisible(true);
     }//GEN-LAST:event_jMenuVendasEfetuarActionPerformed
 
-    private void jMenuVendasConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasConsultarActionPerformed
+    private void jMenuVendasConsultarEstornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasConsultarEstornarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuVendasConsultarActionPerformed
+        escolhaFrame = false;
+        FrameEfetuarVenda frameEfetuarVenda = new FrameEfetuarVenda(this, rootPaneCheckingEnabled);
+        frameEfetuarVenda.setVisible(true);
+    }//GEN-LAST:event_jMenuVendasConsultarEstornarActionPerformed
+
+    private void jMenuClientesBuscarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesBuscarAlterarActionPerformed
+        // TODO add your handling code here:
+        escolhaFrame = false;
+        FrameCadastroCliente frameCadastroCliente = new FrameCadastroCliente(this, rootPaneCheckingEnabled);
+        frameCadastroCliente.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jMenuClientesBuscarAlterarActionPerformed
+
+    private void jMenuAutoresBuscarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresBuscarAlterarActionPerformed
+        // TODO add your handling code here:
+        escolhaFrame = false;
+        FrameCadastroAutor frameCadastroAutor = new FrameCadastroAutor(this, rootPaneCheckingEnabled);
+        frameCadastroAutor.setVisible(true);
+    }//GEN-LAST:event_jMenuAutoresBuscarAlterarActionPerformed
+
+    private void jMenuDiscosBuscarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosBuscarAlterarActionPerformed
+        // TODO add your handling code here:
+        escolhaFrame = false;
+        FrameCadastroDisco frameCadastroDisco = new FrameCadastroDisco(this, rootPaneCheckingEnabled);
+        frameCadastroDisco.setVisible(true);
+    }//GEN-LAST:event_jMenuDiscosBuscarAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,17 +337,20 @@ public class FrameInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAutores;
+    private javax.swing.JMenuItem jMenuAutoresBuscarAlterar;
     private javax.swing.JMenuItem jMenuAutoresCadastrar;
     private javax.swing.JMenuItem jMenuAutoresListar;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenu jMenuClientes;
+    private javax.swing.JMenuItem jMenuClientesBuscarAlterar;
     private javax.swing.JMenuItem jMenuClientesCadastrar;
     private javax.swing.JMenuItem jMenuClientesListar;
     private javax.swing.JMenu jMenuDiscos;
+    private javax.swing.JMenuItem jMenuDiscosBuscarAlterar;
     private javax.swing.JMenuItem jMenuDiscosCadastrar;
     private javax.swing.JMenuItem jMenuDiscosListar;
     private javax.swing.JMenu jMenuVendas;
-    private javax.swing.JMenuItem jMenuVendasConsultar;
+    private javax.swing.JMenuItem jMenuVendasConsultarEstornar;
     private javax.swing.JMenuItem jMenuVendasEfetuar;
     private javax.swing.JLabel lbFotoInicial;
     // End of variables declaration//GEN-END:variables

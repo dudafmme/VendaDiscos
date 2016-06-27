@@ -6,12 +6,12 @@
 package view;
 
 import controller.AutorController;
-import controller.ClienteController;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Autor;
+import static view.FrameInicial.escolhaFrame;
 
 /**
  *
@@ -29,6 +29,11 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        if (escolhaFrame == true) {
+            btAutorBuscar.setVisible(false);
+        } else {
+            btAutorSalvar.setVisible(false);
+        }
     }
 
     /**

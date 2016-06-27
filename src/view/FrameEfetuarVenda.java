@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Disco;
 import model.Venda;
+import static view.FrameInicial.escolhaFrame;
 
 /**
  *
@@ -45,6 +46,12 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     public FrameEfetuarVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        if (escolhaFrame == true) {
+            btBuscarVenda.setVisible(false);
+        } else {
+            btSalvarVenda.setVisible(false);
+        }
     }
 
     /**
@@ -86,6 +93,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         btVoltarVenda = new javax.swing.JButton();
         btLimparVenda = new javax.swing.JButton();
         btSalvarVenda = new javax.swing.JButton();
+        btBuscarVenda = new javax.swing.JButton();
         panelVendasList1 = new javax.swing.JPanel();
 
         panelVendasList.setBackground(new java.awt.Color(255, 255, 255));
@@ -357,10 +365,18 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         });
 
         btSalvarVenda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btSalvarVenda.setText("Salvar");
+        btSalvarVenda.setText("Concluir");
         btSalvarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalvarVendaActionPerformed(evt);
+            }
+        });
+
+        btBuscarVenda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btBuscarVenda.setText("Buscar");
+        btBuscarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarVendaActionPerformed(evt);
             }
         });
 
@@ -369,13 +385,15 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         panelBotoesAutorLayout.setHorizontalGroup(
             panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotoesAutorLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addComponent(btSalvarVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btBuscarVenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btLimparVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btVoltarVenda)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btVoltarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         panelBotoesAutorLayout.setVerticalGroup(
             panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,7 +402,8 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
                 .addGroup(panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltarVenda)
                     .addComponent(btLimparVenda)
-                    .addComponent(btSalvarVenda))
+                    .addComponent(btSalvarVenda)
+                    .addComponent(btBuscarVenda))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -395,7 +414,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         panelVendasList1.setLayout(panelVendasList1Layout);
         panelVendasList1Layout.setHorizontalGroup(
             panelVendasList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 901, Short.MAX_VALUE)
+            .addGap(0, 830, Short.MAX_VALUE)
         );
         panelVendasList1Layout.setVerticalGroup(
             panelVendasList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,8 +491,6 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Quantidade insuficiente no estoque! Diminua a quantidade de venda!");
         } else {
             VendaController cVenda = new VendaController();
-            //int total = Integer.parseInt(qtdeDisp) - Integer.parseInt(qtdeVenda);
-            //tfQtdeDisponivelDisco.setText(Integer.toString(total));
             Float valorTotalVenda = Float.parseFloat(precoDisco) * Integer.parseInt(qtdeVendidaDisco);
             tfValorTotalVenda.setText(Float.toString(valorTotalVenda)); 
         }
@@ -535,7 +552,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         
         try {
             cVenda.efetuarVenda(venda);
-            //JOptionPane.showMessageDialog(this, "dados"+qtde);
+            JOptionPane.showMessageDialog(this, "Quantidade em estoque: " + qtde);
             cVenda.atualizarEstoque(qtde, idDisco);
 
             btLimparVendaActionPerformed(evt);
@@ -547,6 +564,10 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     private void tfCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCPFClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCPFClienteActionPerformed
+
+    private void btBuscarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btBuscarVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -594,6 +615,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarCliente;
     private javax.swing.JButton btBuscarDisco;
+    private javax.swing.JButton btBuscarVenda;
     private javax.swing.JButton btCalcularVenda;
     private javax.swing.JButton btLimparVenda;
     private javax.swing.JButton btSalvarVenda;

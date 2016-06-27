@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Autor;
 import model.Disco;
+import static view.FrameInicial.escolhaFrame;
 
 /**
  *
@@ -33,6 +34,11 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        if (escolhaFrame == true) {
+            btBuscarDisco.setVisible(false);
+        } else {
+            btSalvarDisco.setVisible(false);
+        }
     }
 
     /**

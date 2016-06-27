@@ -45,7 +45,7 @@ public class VendaDAO {
 
     public void atualizarEstoque(String qtde, String id) throws ClassNotFoundException, SQLException {
         conexao = ConnectionFactory.createConnection();
-        String sql = "UPDATE disco SET qtdeDisponivel = " + qtde + " WHERE id = " + id + ";";
+        String sql = "UPDATE disco SET qtdeDisponivel = " + qtde + " WHERE id = " + id;
         comando = conexao.prepareStatement(sql);
 
         if (comando.executeUpdate(sql) > 0) {

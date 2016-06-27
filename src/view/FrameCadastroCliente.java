@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Cliente;
+import static view.FrameInicial.escolhaFrame;
 
 /**
  *
@@ -21,6 +22,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
 
     String cpf;
     ResultSet rs;
+
     /**
      * Creates new form CadastroCliente
      */
@@ -28,6 +30,11 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        if (escolhaFrame == true) {
+            btBuscarCliente.setVisible(false);
+        } else {
+            btClienteSalvar.setVisible(false);
+        }
     }
 
     /**
@@ -395,7 +402,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
         ftfClienteCPF.setText("");
         ftfClienteCep.setText("");
         ftfClienteTelefone.setText("");
-        btClienteSalvar.setVisible(true);
+        //btClienteSalvar.setVisible(true);
     }//GEN-LAST:event_btClienteLimparActionPerformed
 
     private void ftfClienteCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfClienteCPFActionPerformed
@@ -419,7 +426,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             cliente.setCidade(tfClienteEnderecoCidade.getText());
             cliente.setUf(tfClienteEnderecoUF.getText());
             cliente.setComplemento(tfClienteEnderecoComplemento.getText());
-            
+
         } catch (ArithmeticException a) {
             JOptionPane.showMessageDialog(this,
                     "Idade e número são campos numéricos, preencha-os corretamente!");
@@ -453,7 +460,7 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
             tfClienteEnderecoComplemento.setText(rs.getString("complemento"));
             tfClienteEnderecoCidade.setText(rs.getString("cidade"));
             tfClienteEnderecoBairro.setText("bairro");
-            btClienteSalvar.setVisible(false);
+            //btClienteSalvar.setVisible(false);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FrameEfetuarVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
