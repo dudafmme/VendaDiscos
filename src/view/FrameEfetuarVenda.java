@@ -193,7 +193,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
                     .addComponent(lbIdDisco)
                     .addComponent(tfIdDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscarDisco))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelDadosCliente.setBackground(new java.awt.Color(255, 255, 255));
@@ -332,9 +332,9 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
                 .addComponent(panelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelDadosDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelVendaDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         panelBotoesAutor.setBackground(new java.awt.Color(255, 255, 255));
@@ -599,7 +599,6 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     private javax.swing.JButton btLimparVenda;
     private javax.swing.JButton btSalvarVenda;
     private javax.swing.JButton btVoltarVenda;
-    private javax.swing.JFormattedTextField ftfClienteCPF;
     private javax.swing.JLabel lbAutor;
     private javax.swing.JLabel lbCPFCliente;
     private javax.swing.JLabel lbIdCliente;

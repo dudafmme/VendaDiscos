@@ -6,6 +6,7 @@
 package view;
 
 import controller.ClienteController;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,8 @@ import model.Cliente;
  */
 public class FrameCadastroCliente extends javax.swing.JDialog {
 
+    String cpf;
+    ResultSet rs;
     /**
      * Creates new form CadastroCliente
      */
@@ -434,6 +437,23 @@ public class FrameCadastroCliente extends javax.swing.JDialog {
 
     private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarClienteActionPerformed
         // TODO add your handling code here:
+        ClienteController cCliente = new ClienteController();
+        cpf = ftfClienteCPF.getText();
+        try {
+            rs = cCliente.buscarCliente(cpf);
+            tfClienteNome.setText(rs.getString("nome"));
+            tfClienteIdade.setText(rs.getString("idade"));
+            ftfClienteTelefone.setText(rs.getString("telefone"));
+            ftfClienteCep.setText(rs.getString("cep"));
+            tfClienteEnderecoUF.setText(rs.getString("uf"));
+            tfClienteEnderecoNumero.setText(rs.getString("numero"));
+            tfClienteEnderecoLogradouro.setText(rs.getString("logradouro"));
+            tfClienteEnderecoComplemento.setText(rs.getString("complemento"));
+            tfClienteEnderecoCidade.setText(rs.getString("cidade"));
+            tfClienteEnderecoBairro.setText("bairro");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FrameEfetuarVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btBuscarClienteActionPerformed
 
     /**
