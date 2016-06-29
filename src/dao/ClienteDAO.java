@@ -19,6 +19,7 @@ import model.Cliente;
 public class ClienteDAO {
     Connection conexao;
     PreparedStatement comando;
+    ResultSet rs;
     
     //Método para gravar um cliente no BD
     public void inserirNovoCliente(Cliente cliente) throws SQLException, ClassNotFoundException{
@@ -56,9 +57,15 @@ public class ClienteDAO {
     }
     
     public ResultSet buscarCliente(String cpf) throws ClassNotFoundException, SQLException {
-        ResultSet rs;
         conexao = ConnectionFactory.createConnection();
         String sql = "SELECT * FROM cliente WHERE cpf = '" + cpf + "'";
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
+    }
+    public ResultSet listarClientes() throws ClassNotFoundException, SQLException {        
+        conexao = ConnectionFactory.createConnection();
+        String sql = "SELECT * FROM cliente";
         comando = conexao.prepareStatement(sql);
         rs = comando.executeQuery(sql);
         return rs;

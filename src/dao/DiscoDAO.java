@@ -15,7 +15,8 @@ public class DiscoDAO {
 
     Connection conexao;
     PreparedStatement comando;
-
+    ResultSet rs;
+    
     //Método para inserir um novo autor
     public void inserirNovoDisco(Disco disco) throws SQLException, ClassNotFoundException {
         conexao = ConnectionFactory.createConnection();
@@ -59,11 +60,21 @@ public class DiscoDAO {
     }
     
     public ResultSet buscarDiscoCompleto(String nomeDisco) throws ClassNotFoundException, SQLException {
-        ResultSet rs;
+        
         conexao = ConnectionFactory.createConnection();
         String sql = "SELECT * FROM disco d, autor a  "
                 + "WHERE d.nome = '" + nomeDisco + "' "
                 + "AND d.autor_id = a.id";
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
+    }
+     public ResultSet listarDiscos() throws ClassNotFoundException, SQLException {        
+        conexao = ConnectionFactory.createConnection();
+        String sql = "SELECT d.id, d.nome, a.nome "
+                + "AS 'autor', d.qtdeDisponivel, d.preco " 
+                + "FROM disco d, autor a " 
+                + "WHERE d.autor_id = a.id;";
         comando = conexao.prepareStatement(sql);
         rs = comando.executeQuery(sql);
         return rs;

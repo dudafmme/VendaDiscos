@@ -267,7 +267,13 @@ public class FrameInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuClientesCadastrarActionPerformed
 
     private void jMenuClientesListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesListarActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            FrameClientesList frameClienteList = new FrameClientesList(this, rootPaneCheckingEnabled);
+            frameClienteList.setVisible(true);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuClientesListarActionPerformed
 
     private void jMenuDiscosCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosCadastrarActionPerformed
@@ -278,7 +284,15 @@ public class FrameInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuDiscosCadastrarActionPerformed
 
     private void jMenuDiscosListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiscosListarActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            FrameDiscosList frameDiscoList = new FrameDiscosList(this, rootPaneCheckingEnabled);
+            frameDiscoList.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuDiscosListarActionPerformed
 
     private void jMenuVendasEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasEfetuarActionPerformed

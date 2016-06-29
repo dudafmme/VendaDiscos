@@ -6,7 +6,7 @@
 package view;
 
 import controller.AutorController;
-import controller.ClienteController;
+import controller.DiscoController;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,16 +17,16 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Duda
  */
-public class FrameClientesList extends javax.swing.JDialog {
+public class FrameDiscosList extends javax.swing.JDialog {
     
     ResultSet rs;
-    ClienteController cCliente;
+    DiscoController cDisco;
 
     /**
      * Creates new form FrameVenda
      */
 
-    public FrameClientesList(java.awt.Frame parent, boolean modal) throws ClassNotFoundException, SQLException{
+    public FrameDiscosList(java.awt.Frame parent, boolean modal) throws ClassNotFoundException, SQLException{
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);   
@@ -34,9 +34,9 @@ public class FrameClientesList extends javax.swing.JDialog {
     }
     
     private void updateTable() throws SQLException, ClassNotFoundException{
-        cCliente = new ClienteController();
-        rs = cCliente.listarClientes();
-        tableClientes.setModel(DbUtils.resultSetToTableModel(rs));
+        cDisco = new DiscoController();
+        rs = cDisco.listarDiscos();
+        tableAutoresList.setModel(DbUtils.resultSetToTableModel(rs));
     }
 
 
@@ -50,9 +50,9 @@ public class FrameClientesList extends javax.swing.JDialog {
     private void initComponents() {
 
         panelVendasList = new javax.swing.JPanel();
-        panelClientesList = new javax.swing.JPanel();
+        panelVendasList1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableClientes = new javax.swing.JTable();
+        tableAutoresList = new javax.swing.JTable();
 
         panelVendasList.setBackground(new java.awt.Color(255, 255, 255));
         panelVendasList.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray), "Vendas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 12))); // NOI18N
@@ -71,10 +71,10 @@ public class FrameClientesList extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(250, 250, 250));
 
-        panelClientesList.setBackground(new java.awt.Color(255, 255, 255));
-        panelClientesList.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray), "Clientes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 14))); // NOI18N
+        panelVendasList1.setBackground(new java.awt.Color(255, 255, 255));
+        panelVendasList1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray), "Autores", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 14))); // NOI18N
 
-        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tableAutoresList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -85,21 +85,20 @@ public class FrameClientesList extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane1.setViewportView(tableClientes);
+        jScrollPane1.setViewportView(tableAutoresList);
 
-        javax.swing.GroupLayout panelClientesListLayout = new javax.swing.GroupLayout(panelClientesList);
-        panelClientesList.setLayout(panelClientesListLayout);
-        panelClientesListLayout.setHorizontalGroup(
-            panelClientesListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelClientesListLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelVendasList1Layout = new javax.swing.GroupLayout(panelVendasList1);
+        panelVendasList1.setLayout(panelVendasList1Layout);
+        panelVendasList1Layout.setHorizontalGroup(
+            panelVendasList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVendasList1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1302, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelClientesListLayout.setVerticalGroup(
-            panelClientesListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelClientesListLayout.createSequentialGroup()
+        panelVendasList1Layout.setVerticalGroup(
+            panelVendasList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVendasList1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
@@ -108,12 +107,12 @@ public class FrameClientesList extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelClientesList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelVendasList1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelClientesList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelVendasList1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -137,29 +136,14 @@ public class FrameClientesList extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameClientesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDiscosList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameClientesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDiscosList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameClientesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDiscosList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameClientesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDiscosList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
@@ -167,7 +151,7 @@ public class FrameClientesList extends javax.swing.JDialog {
             public void run() {
 
                 try {
-                    FrameClientesList dialog = new FrameClientesList(new javax.swing.JFrame(), true);
+                    FrameDiscosList dialog = new FrameDiscosList(new javax.swing.JFrame(), true);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent e) {
@@ -176,9 +160,9 @@ public class FrameClientesList extends javax.swing.JDialog {
                     });
                     dialog.setVisible(true);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(FrameClientesList.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrameDiscosList.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
-                    Logger.getLogger(FrameClientesList.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrameDiscosList.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -187,8 +171,8 @@ public class FrameClientesList extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panelClientesList;
     private javax.swing.JPanel panelVendasList;
-    private javax.swing.JTable tableClientes;
+    private javax.swing.JPanel panelVendasList1;
+    private javax.swing.JTable tableAutoresList;
     // End of variables declaration//GEN-END:variables
 }
