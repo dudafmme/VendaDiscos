@@ -7,6 +7,7 @@ package view;
 
 import controller.AutorController;
 import controller.DiscoController;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -38,6 +39,7 @@ public class FrameCadastroDisco extends javax.swing.JDialog {
             btBuscarDisco.setVisible(false);
         } else {
             btSalvarDisco.setVisible(false);
+            lbNome.setForeground(Color.red);
         }
     }
 

@@ -41,5 +41,12 @@ public class VendaController {
             JOptionPane.showMessageDialog(null, "Nenhum dado cadastrado!");
         return rs;
     }
+    public ResultSet listarVendasPorCPF(String cpf) throws ClassNotFoundException, SQLException {
+        vendaDAO = new VendaDAO();
+        rs = vendaDAO.listarVendasPorCPF(cpf);
+        if (!rs.first())
+            JOptionPane.showMessageDialog(null, "Nenhum dado cadastrado!");
+        return rs;
+    }
 }    
 

@@ -6,6 +6,7 @@
 package view;
 
 import controller.AutorController;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -33,6 +34,8 @@ public class FrameCadastroAutor extends javax.swing.JDialog {
             btAutorBuscar.setVisible(false);
         } else {
             btAutorSalvar.setVisible(false);
+            lbAutorNome.setForeground(Color.red);
+            lbAutorOrigem.setForeground(Color.red);
         }
     }
 

@@ -69,4 +69,16 @@ public class VendaDAO {
         rs = comando.executeQuery(sql);
         return rs;
     }
+    
+    public ResultSet listarVendasPorCPF(String cpf) throws ClassNotFoundException, SQLException {
+        conexao = ConnectionFactory.createConnection();
+        sql = "SELECT v.id, c.cpf, d.nome, d.preco, v.qtdeVendida, "
+                + "v.valorTotal, v.dataVenda " 
+                + "FROM venda v, cliente c, disco d " 
+                + "WHERE v.disco_id = d.id AND v.cliente_id = c.id " 
+                + "AND c.cpf = " + cpf;
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
+    }
 }
