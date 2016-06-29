@@ -54,4 +54,12 @@ public class AutorDAO {
         rs = comando.executeQuery(sql);
         return rs;
     }
+    
+    public ResultSet listarAutores() throws ClassNotFoundException, SQLException {        
+        conexao = ConnectionFactory.createConnection();
+        String sql = "SELECT * FROM autor";
+        comando = conexao.prepareStatement(sql);
+        rs = comando.executeQuery(sql);
+        return rs;
+    }
 }

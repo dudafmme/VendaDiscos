@@ -5,18 +5,30 @@
  */
 package view;
 
+import dao.ConnectionFactory;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Duda
  */
 public class FrameInicial extends javax.swing.JFrame {
+
     static boolean escolhaFrame;
+
     /**
      * Creates new form FrameInicial
      */
@@ -236,7 +248,14 @@ public class FrameInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuAutoresCadastrarActionPerformed
 
     private void jMenuAutoresListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresListarActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            FrameAutoresList frameAutoresList = new FrameAutoresList(this, rootPaneCheckingEnabled);
+            frameAutoresList.setVisible(true);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jMenuAutoresListarActionPerformed
 
     private void jMenuClientesCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesCadastrarActionPerformed
@@ -244,7 +263,7 @@ public class FrameInicial extends javax.swing.JFrame {
         escolhaFrame = true;
         FrameCadastroCliente frameCadastroClientes = new FrameCadastroCliente(this, rootPaneCheckingEnabled);
         frameCadastroClientes.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuClientesCadastrarActionPerformed
 
     private void jMenuClientesListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesListarActionPerformed
@@ -263,17 +282,29 @@ public class FrameInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuDiscosListarActionPerformed
 
     private void jMenuVendasEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasEfetuarActionPerformed
-        // TODO add your handling code here:
-        escolhaFrame = true;
-        FrameEfetuarVenda frameEfetuarVenda = new FrameEfetuarVenda(this, rootPaneCheckingEnabled);
-        frameEfetuarVenda.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escolhaFrame = true;
+            FrameEfetuarVenda frameEfetuarVenda = new FrameEfetuarVenda(this, rootPaneCheckingEnabled);
+            frameEfetuarVenda.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuVendasEfetuarActionPerformed
 
     private void jMenuVendasConsultarEstornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasConsultarEstornarActionPerformed
-        // TODO add your handling code here:
-        escolhaFrame = false;
-        FrameEfetuarVenda frameEfetuarVenda = new FrameEfetuarVenda(this, rootPaneCheckingEnabled);
-        frameEfetuarVenda.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escolhaFrame = false;
+            FrameEfetuarVenda frameEfetuarVenda = new FrameEfetuarVenda(this, rootPaneCheckingEnabled);
+            frameEfetuarVenda.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuVendasConsultarEstornarActionPerformed
 
     private void jMenuClientesBuscarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesBuscarAlterarActionPerformed
@@ -281,8 +312,8 @@ public class FrameInicial extends javax.swing.JFrame {
         escolhaFrame = false;
         FrameCadastroCliente frameCadastroCliente = new FrameCadastroCliente(this, rootPaneCheckingEnabled);
         frameCadastroCliente.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_jMenuClientesBuscarAlterarActionPerformed
 
     private void jMenuAutoresBuscarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutoresBuscarAlterarActionPerformed
@@ -332,7 +363,7 @@ public class FrameInicial extends javax.swing.JFrame {
                 new FrameInicial().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

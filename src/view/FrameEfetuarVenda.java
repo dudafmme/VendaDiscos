@@ -5,9 +5,12 @@
  */
 package view;
 
+import controller.AutorController;
 import controller.ClienteController;
 import controller.DiscoController;
 import controller.VendaController;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -20,6 +23,7 @@ import model.Cliente;
 import model.Disco;
 import model.Venda;
 import static view.FrameInicial.escolhaFrame;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -29,7 +33,6 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
 
     String nomeAutor;
     String idDisco;
-    ResultSet rs;
     String nomeDisco;
     String precoDisco;
     String qtdeDisponivel;
@@ -38,12 +41,14 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     String valorTotal;
     String qtdeVendidaDisco;
     String qtde;
-    
-
+    Connection conexao;
+    PreparedStatement comando;
+    ResultSet rs;
+    VendaController cVenda;
     /**
      * Creates new form FrameVenda
      */
-    public FrameEfetuarVenda(java.awt.Frame parent, boolean modal) {
+    public FrameEfetuarVenda(java.awt.Frame parent, boolean modal) throws SQLException, ClassNotFoundException {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -52,8 +57,13 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         } else {
             btSalvarVenda.setVisible(false);
         }
+        updateTable();
     }
-
+    private void updateTable() throws SQLException, ClassNotFoundException{
+        cVenda = new VendaController();
+        rs = cVenda.listarVendas();
+        tableVendas.setModel(DbUtils.resultSetToTableModel(rs));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,6 +105,8 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         btSalvarVenda = new javax.swing.JButton();
         btBuscarVenda = new javax.swing.JButton();
         panelVendasList1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableVendas = new javax.swing.JTable();
 
         panelVendasList.setBackground(new java.awt.Color(255, 255, 255));
         panelVendasList.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray), "Vendas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 12))); // NOI18N
@@ -393,7 +405,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
                 .addComponent(btLimparVenda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btVoltarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         panelBotoesAutorLayout.setVerticalGroup(
             panelBotoesAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,15 +422,34 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         panelVendasList1.setBackground(new java.awt.Color(255, 255, 255));
         panelVendasList1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray), "Vendas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 12))); // NOI18N
 
+        tableVendas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableVendas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(tableVendas);
+
         javax.swing.GroupLayout panelVendasList1Layout = new javax.swing.GroupLayout(panelVendasList1);
         panelVendasList1.setLayout(panelVendasList1Layout);
         panelVendasList1Layout.setHorizontalGroup(
             panelVendasList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGroup(panelVendasList1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelVendasList1Layout.setVerticalGroup(
             panelVendasList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelVendasList1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -554,6 +585,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
             cVenda.efetuarVenda(venda);
             JOptionPane.showMessageDialog(this, "Quantidade em estoque: " + qtde);
             cVenda.atualizarEstoque(qtde, idDisco);
+            updateTable();
 
             btLimparVendaActionPerformed(evt);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -600,14 +632,20 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrameEfetuarVenda dialog = new FrameEfetuarVenda(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                try {
+                    FrameEfetuarVenda dialog = new FrameEfetuarVenda(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FrameEfetuarVenda.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(FrameEfetuarVenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -620,6 +658,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     private javax.swing.JButton btLimparVenda;
     private javax.swing.JButton btSalvarVenda;
     private javax.swing.JButton btVoltarVenda;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAutor;
     private javax.swing.JLabel lbCPFCliente;
     private javax.swing.JLabel lbIdCliente;
@@ -636,6 +675,7 @@ public class FrameEfetuarVenda extends javax.swing.JDialog {
     private javax.swing.JPanel panelVendaDados;
     private javax.swing.JPanel panelVendasList;
     private javax.swing.JPanel panelVendasList1;
+    private javax.swing.JTable tableVendas;
     private javax.swing.JTextField tfAutor;
     private javax.swing.JFormattedTextField tfCPFCliente;
     private javax.swing.JTextField tfIdCliente;

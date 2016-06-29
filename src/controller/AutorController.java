@@ -9,6 +9,9 @@ import dao.AutorDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.Autor;
 
 /**
@@ -42,6 +45,14 @@ public class AutorController {
         rs = autorDAO.buscarAutorPorNome(nome);
         if (!rs.first())
             JOptionPane.showMessageDialog(null, "Autor não encontrado!");
+        return rs;
+    }
+    
+    public ResultSet listarAutores() throws ClassNotFoundException, SQLException {
+        autorDAO = new AutorDAO();
+        rs = autorDAO.listarAutores();
+        if (!rs.first())
+            JOptionPane.showMessageDialog(null, "Nenhum dado cadastrado!");
         return rs;
     }
 }

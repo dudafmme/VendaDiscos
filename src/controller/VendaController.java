@@ -5,10 +5,12 @@
  */
 package controller;
 
-import dao.DiscoDAO;
 import dao.VendaDAO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Disco;
+import javax.swing.JOptionPane;
 import model.Venda;
 
 /**
@@ -16,15 +18,28 @@ import model.Venda;
  * @author Duda
  */
 public class VendaController {
-     
+    VendaDAO vendaDAO;
+    Connection conexao;
+    PreparedStatement comando;
+    ResultSet rs;
+    String sql;
+       
     public void efetuarVenda(Venda venda) throws SQLException, ClassNotFoundException{
-        VendaDAO vendaDAO = new VendaDAO();
+        vendaDAO = new VendaDAO();
         vendaDAO.inserirNovaVenda(venda);
     }
     
     public void atualizarEstoque(String qtde, String id) throws ClassNotFoundException, SQLException{
-        VendaDAO vendaDAO = new VendaDAO();
+        vendaDAO = new VendaDAO();
         vendaDAO.atualizarEstoque(qtde, id);
+    }
+    
+    public ResultSet listarVendas() throws ClassNotFoundException, SQLException {
+        vendaDAO = new VendaDAO();
+        rs = vendaDAO.listarVendas();
+        if (!rs.first())
+            JOptionPane.showMessageDialog(null, "Nenhum dado cadastrado!");
+        return rs;
     }
 }    
 
